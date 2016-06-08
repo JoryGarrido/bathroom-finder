@@ -1,3 +1,7 @@
+PROJECT NOTES:
+  Feel free to add and update!
+
+
 Mobile first
 
 Postgres?
