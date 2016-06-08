@@ -6,11 +6,11 @@ Mobile first
 
 Postgres?
 
-Categories: (* if required)
-* Men/Women/Both
-* Rating
-* Customers only
-* Hours
+Categories: ( * if required)
+- * Men/Women/Both
+- * Rating
+- * Customers only
+- * Hours
 - Review
 - Changing table
 - Multi-stall or private
