@@ -35,7 +35,6 @@ Postgres?
 - * Customers only
 - * Hours
 - Comments section (available to all)
-
 - Changing table
 - Multi-stall or private
 - Key needed
