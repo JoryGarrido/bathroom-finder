@@ -5,10 +5,8 @@
 # Site
 
 ## Pages:
-- Public landing page:  shows list of nearby restrooms and ratings
-- Sign up
-- Sign in
-- Member landing: same as public with personalized settings
+- Public / members landing page (same route, different views):  shows list of nearby restrooms and ratings, members has personalized settings
+- Sign up / Sign in
 - Members edit: allows account creation/access, then uses preferences when on main page (ie. display only 3 stars and above), add restrooms and edit if author, or add additional comments
 - Admin pages: add/edit/remove all content
 
