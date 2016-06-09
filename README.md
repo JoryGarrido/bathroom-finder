@@ -1,6 +1,9 @@
 # PROJECT NOTES:
 - Feel free to add and edit!
 
+#NAMES
+- express app: “bathroom_finder_app”
+- dababase: “bathrooms”
 
 # Site
 
