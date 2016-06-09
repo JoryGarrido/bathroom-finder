@@ -5,10 +5,11 @@
 # Site
 
 ## Pages:
-- Landing page: accessible to guests, shows list of nearby restrooms and ratings
-- Map page: same info in map view
-- Info pages on each restroom (one route/view for all)
-- User pages: allows account creation/access, then uses preferences when on main page (ie. display only 3 stars and above), add restrooms and edit if author, or add additional comments
+- Public landing page:  shows list of nearby restrooms and ratings
+- Sign up
+- Sign in
+- Member landing: same as public with personalized settings
+- Members edit: allows account creation/access, then uses preferences when on main page (ie. display only 3 stars and above), add restrooms and edit if author, or add additional comments
 - Admin pages: add/edit/remove all content
 
 
@@ -30,10 +31,12 @@ Postgres?
 
 ##Cagegories:
  ( * if required)
+- * Name
 - * Men/Women/Both
 - * Rating
 - * Customers only
 - * Hours
+- Pictures?
 - Comments section (available to all)
 - Changing table
 - Multi-stall or private
