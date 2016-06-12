@@ -2,13 +2,14 @@ doctype html
 html
   head
   link(rel="stylesheet", href='/stylesheets/style.css')
+  script(src="../javascript/main.js")
   
   header
     div.menu-wrap
       nav.menu
         ul
           li
-            a(href="#") Login
+            a(href="#" id="login") Login
             ul#sub-menu
               li 
                 a(href='#') Edit Account
@@ -19,4 +20,6 @@ html
         ul
           li
             a(href="#") Add Bathroom
+            
+    h1 hello #{user.username}
     block content
