@@ -1,16 +1,22 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    h1 Hello #{user.username}
-    if user.id
-      p
-        a(href='/signout') Sign out
-    else
-      p
-        a(href='/signin') Sign in
-      p
-        a(href='/signup') Sign up
+  link(rel="stylesheet", href='/stylesheets/style.css')
+  
+  header
+    div.menu-wrap
+      nav.menu
+        ul
+          li
+            a(href="#") Login
+            ul#sub-menu
+              li 
+                a(href='#') Edit Account
+              li
+                a(href='/signout') Signout
+        ul
+          li Bathroom_Finder
+        ul
+          li
+            a(href="#") Add Bathroom
     block content
