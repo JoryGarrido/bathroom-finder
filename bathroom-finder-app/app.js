@@ -32,6 +32,7 @@ app.use(cookieSession(
 ))
 
 app.use(function(req, res, next) {
+  console.log(res.locals.user);
   if (req.session.id) {
     knex('users')
     .where({id: req.session.id})
