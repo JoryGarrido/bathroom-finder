@@ -3,6 +3,7 @@ var router = express.Router();
 var bcrypt = require('bcrypt');
 
 var knex = require('../db/knex');
+var findBathrooms = require('../findBathrooms')
 
 router.get('/', function(req, res, next) {
   var lat;
@@ -22,8 +23,9 @@ router.post('/position', function(req, res, next) {
   req.session.lng = lng;
 
   // INVOKE FIND BATHROOMS ALGORITHM
-  // findBathrooms.findBathrooms(lat, lng);
-  res.render('index');
+  findBathrooms.findBathrooms(lat, lng);
+  console.log(bathrooms);
+  res.render('index', {bathrooms: bathrooms});
 });
 
 router.get('/main', function(req, res, next) {
