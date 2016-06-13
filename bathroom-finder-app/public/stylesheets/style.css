@@ -62,4 +62,20 @@ html * {
 #sub-menu li a:hover, .sub-menu .current-item a {
   background: #3e3436; }
 
+#banner {
+  height: 40%;
+  border: 1px black solid; }
+
+#teaminfo {
+  height: 40%;
+  border: 1px black solid; }
+
+#socIcons {
+  height: 5%;
+  border: 1px black solid; }
+
+#footer {
+  height: 5%;
+  border: 1px black solid; }
+
 /*# sourceMappingURL=style.css.map */
