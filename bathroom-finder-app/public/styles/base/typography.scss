@@ -2,7 +2,25 @@ html *{
   margin: 0;
   padding: 0;
 }
+
+html, body {
+  height: 100%;
+}
+
+#map {
+  height: 45%;
+}
+
+#title {
+  color: rgb(200,200,200);
+}
+
+.hidden {
+  display: none;
+}
+
 // --------------- header start -------------------
+
 
 .menu-wrap {
     width:100%;
@@ -17,7 +35,7 @@ html *{
     justify-content: space-around;
     height: 80px;
     ul{
-      padding-top: 38px;
+      padding-top: 30px;
     }
     li {
       margin:0px;
@@ -102,5 +120,8 @@ html *{
     align-self: flex-end;
     margin-right: 20px;
   }
+}
+#signupButton {
+  
 }
 //----------------------------------

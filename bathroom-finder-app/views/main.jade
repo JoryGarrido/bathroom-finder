@@ -1,0 +1,9 @@
+extends layout
+block content
+
+  div(id="map")
+  p(class="hidden" id="lat")= lat
+  p(class="hidden" id="lng")= lng
+  
+  script(src="/javascript/initMap.js")
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMR72LZK1TzznEiG9LqMJtEvfafaLtMhE&callback=initMap" async defer)

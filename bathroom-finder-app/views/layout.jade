@@ -1,8 +1,11 @@
 doctype html
 html
   head
+  meta(name="viewport" content="initial-scale=1.0")
   link(rel="stylesheet", href='/stylesheets/style.css')
-  script(src="../javascript/main.js")
+  script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
+  script(src="/javascript/nav.js")
+  script(src="/javascript/main.js")
   
   header
     div.menu-wrap
@@ -16,10 +19,10 @@ html
               li
                 a(href='/signout') Signout
         ul
-          li Bathroom_Finder
+          li#title Bathroom_Finder
         ul
           li
             a(href="#") Add Bathroom
-            
+  body            
     h1 hello #{user.username}
-    block content
+  block content
