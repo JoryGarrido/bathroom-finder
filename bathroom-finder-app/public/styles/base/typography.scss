@@ -15,7 +15,7 @@ html *{
     flex-direction: row;
     align-content: center;
     justify-content: space-around;
-    height: 110px;;
+    height: 80px;
     ul{
       padding-top: 38px;
     }
@@ -78,9 +78,9 @@ html *{
     background:#3e3436;
 }
 
-// --------------- header end -------------------
+// --------------------------------
 
-
+// --------------- Sign in/Sign Up-------------------
 #signin, #signup {
   display: none;
   flex-direction: column;
@@ -102,5 +102,5 @@ html *{
     align-self: flex-end;
     margin-right: 20px;
   }
-
 }
+//----------------------------------
