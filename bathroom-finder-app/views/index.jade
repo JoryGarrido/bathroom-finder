@@ -1,11 +1,7 @@
 extends layout
 block content
 
-  
-
-
-
-
+    
 
 
 
@@ -22,6 +18,12 @@ block content
 
 
   div
+    section#AddABathroom
+      h1 
+
+
+  //- Sign in Div
+  div
     section#signin
       button.xButton &#10006;
       h1 Sign In
@@ -32,23 +34,24 @@ block content
         label
           p Password
         input(type="password")
-      p not a user? 
-        a(href='#' id="signupButton") Sign up
-        
+        p not a user? 
+          a(href='#' id="signupButton") Sign up
+          
       button login with facebook
-      
-  section#signup
-    button.xButton &#10006;
-    h1 Sign Up
-    form(action='/signup' method='POST')
-      label
-        p Username
-      input(type="text")
-      label
-        p Password
-      input(type="password")
-    p Have an account? 
-      a(href="#" id="signinButton") Sign In
-      
-    button Sign Up With Facebook
-      
+        
+  //- Sign up div
+  div    
+    section#signup
+      button.xButton &#10006;
+      h1 Sign Up
+      form(action='/signup' method='POST')
+        label
+          p Username
+        input(type="text")
+        label
+          p Password
+        input(type="password")
+        p Have an account? 
+          a(href="#" id="signinButton") Sign In    
+      button Sign Up With Facebook
+        

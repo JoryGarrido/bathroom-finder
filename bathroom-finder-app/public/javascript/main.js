@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  console.log(document.getElementsByClassName('xButton')[0]);
+  // console.log(document.getElementsByClassName('xButton'));
 
   var signin = document.getElementById("signin");
   var signup = document.getElementById("signup");
+  console.log(signin);
 
   document.getElementById("login").addEventListener('click', function(){
     signin.style.display = "flex";
@@ -26,6 +27,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
       signup.style.display = "none";
     });
   }
-
-
 });

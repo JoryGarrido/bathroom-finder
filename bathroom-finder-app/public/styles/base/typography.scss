@@ -96,9 +96,9 @@ html, body {
     background:#3e3436;
 }
 
-// --------------- header end -------------------
+// --------------------------------
 
-
+// --------------- Sign in/Sign Up-------------------
 #signin, #signup {
   display: none;
   flex-direction: column;
@@ -120,5 +120,8 @@ html, body {
     align-self: flex-end;
     margin-right: 20px;
   }
-
 }
+#signupButton {
+  
+}
+//----------------------------------
