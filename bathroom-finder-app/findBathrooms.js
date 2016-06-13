@@ -29,7 +29,8 @@ function findBathrooms(cLat, cLng) {
   console.log(cLatLo);
   console.log(typeof(cLatLo));
 
-  knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first.then(function(bathroom){
+  knex('bathrooms').where('id', 1).first().then(function(bathroom){
+  // knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first().then(function(bathroom){
   // knex('bathrooms').where({lat: [cLatHi, cLatLo], lng: [cLngHi, cLngLo]}).first().then(function(bathroom){
     console.log(bathroom);
   })
