@@ -50,6 +50,8 @@ html, body {
 
 .menu li:hover > a, .menu .current-item > a {
     text-decoration:none;
+    border-radius: 20px 20px 20px 20px;
+
     color:#be5b70;
 }
 
@@ -124,11 +126,11 @@ html, body {
 }
 //----------------------------------
 
-//
+// --------------- Add a Bathroom ---------------
 #AddABathroom {
-  display: flex;
+  display: none;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: white;
   text-align: center;
@@ -143,9 +145,42 @@ html, body {
   transform: translate(-50%, -50%);
 
   box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    width: 30%;
+  }
+
+  #checkboxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    span {
+      display: inline-block;
+      position: relative;
+      width: 1.1em;
+    }
+  }
+  .rating > span:hover:before,
+  .rating > span:hover ~ span:before {
+     content: "\2605";
+     position: absolute;
+     color: gold;
+  }
 
   .xButton {
     align-self: flex-end;
     margin-right: 20px;
   }
 }
+
+//----------------------------------

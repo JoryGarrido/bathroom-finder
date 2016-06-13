@@ -12,7 +12,7 @@ html
       nav.menu
         ul
           li
-            a(href="#" id="login") Login
+            a#login Login
             ul#sub-menu
               li 
                 a(href='#') Edit Account
@@ -22,7 +22,7 @@ html
           li#title Bathroom_Finder
         ul
           li
-            a(href="#") Add Bathroom
+            a#addBathroomButton Add Bathroom
   body      
   //- Sign in Div
   div
@@ -37,7 +37,7 @@ html
           p Password
         input(type="password")
         p not a user? 
-          a(href='#' id="signupButton") Sign up
+          a#signupButton(href="#") Sign up
           
       button login with facebook
         
@@ -55,5 +55,42 @@ html
         input(type="password")
         p Have an account? 
           a(href="#" id="signinButton") Sign In    
-      button Sign Up With Facebook      
+      button Sign Up With Facebook  
+  div
+    section#AddABathroom
+      button.xButton &#10006;
+      h1 Add a Bathroom
+      form
+        label
+          p Name
+        input(type="text")
+        p Rating
+        div(class="rating")
+          span &#9734
+          span &#9734
+          span &#9734
+          span &#9734
+          span &#9734
+        label
+          p Review
+        textarea
+        label
+          p Directions
+          textarea
+        div#checkboxes
+          p private
+          input(type="checkbox")
+          p men's changing table 
+          input(type="checkbox")
+          p women's changing table
+          input(type="checkbox")
+          p unisex
+          input(type="checkbox")
+          p customers only
+          input(type="checkbox")
+            
+        input(type="submit")
+              
+              
+    
   block content
