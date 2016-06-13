@@ -113,4 +113,62 @@ html, body {
     align-self: flex-end;
     margin-right: 20px; }
 
+main {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+#banner {
+  height: 400px;
+  border: 1px black solid;
+  text-align: center; }
+
+#description {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  margin-top: 10px; }
+
+#locate {
+  margin-top: 10%;
+  width: 200px;
+  height: 50px; }
+
+#teamInfo {
+  height: 400px;
+  border: 1px black solid;
+  display: flex;
+  justify-content: space-around; }
+
+.info {
+  width: 30%; }
+
+.info img {
+  margin-top: 20px;
+  border-radius: 50%;
+  display: flex;
+  margin: auto;
+  margin-top: 20px; }
+
+.info p {
+  text-align: center;
+  margin-top: 20px; }
+
+#socIcons {
+  height: 80px;
+  border: 1px black solid;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.icon {
+  margin: 5px; }
+
+#footer {
+  height: 80px;
+  border: 1px black solid;
+  text-align: center; }
+
+#footer p {
+  margin-top: 5px; }
+
 /*# sourceMappingURL=style.css.map */
