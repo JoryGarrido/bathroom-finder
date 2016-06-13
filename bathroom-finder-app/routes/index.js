@@ -4,10 +4,32 @@ var bcrypt = require('bcrypt');
 
 var knex = require('../db/knex');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {user: res.locals.user});
+  var lat;
+  var lng;
+  if (req.session.lat) {
+    lat = req.session.lat
+    lng = req.session.lng
+  }
+  res.render('index', {user: res.locals.user, lat: lat, lng: lng });
 });
+
+// RECEIVES LAT/LNG FROM CLIENT
+router.post('/position', function(req, res, next) {
+  var lat = req.body.lat.toString();
+  var lng = req.body.lng.toString();
+  req.session.lat = lat;
+  req.session.lng = lng;
+
+  // INVOKE FIND BATHROOMS ALGORITHM
+  // findBathrooms.findBathrooms(lat, lng);
+  res.redirect('/');
+});
+
+router.get('/main', function(req, res, next) {
+  console.log("router: " + req.session.lat);
+  res.render('main', {lat: req.session.lat, lng: req.session.lng});
+})
 
 router.get('/signup', function(req, res, next) {
   res.render('signup');
