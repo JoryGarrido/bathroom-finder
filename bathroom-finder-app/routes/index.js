@@ -23,7 +23,7 @@ router.post('/position', function(req, res, next) {
 
   // INVOKE FIND BATHROOMS ALGORITHM
   // findBathrooms.findBathrooms(lat, lng);
-  res.redirect('/');
+  res.render('index');
 });
 
 router.get('/main', function(req, res, next) {
