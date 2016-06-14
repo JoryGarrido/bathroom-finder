@@ -105,14 +105,9 @@ router.post('/signout', function (req, res, next) {
   res.redirect('/');
 });
 
-router.post('/findbathrooms', function (req, res, next){
-  res.redirect('main');
-});
-
 router.get('/moreinfo', function(req, res, next){
   res.render('moreinfo');
 })
-
 // REDIRECT MEMBER GOING TO SIGIN/signup
 
 
