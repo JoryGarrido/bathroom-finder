@@ -1,7 +1,7 @@
 // GET COORDINATES FROM THE DOM
 var lat = parseFloat(document.getElementById('lat').innerText);
 var lng = parseFloat(document.getElementById('lng').innerText);
-var zoom = 20;
+var zoom = 19;
 
 // INITIALIZE MAP BASED ON CURRENT LOCATION
 function initMap() {

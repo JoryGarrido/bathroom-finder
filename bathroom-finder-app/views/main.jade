@@ -2,6 +2,18 @@ extends layout
 block content
 
   div(id="map")
+  div(id="list")
+    each bathroom in bathrooms
+      div(class="listItem")
+        div(class="halfList")
+          div(class="stars")= bathroom.rating
+          p(class="listTitle")= bathroom.bathroomname 
+          p= bathroom.directions
+        div(class="halfList")
+  
+  
+  
+  
   p(class="hidden" id="lat")= lat
   p(class="hidden" id="lng")= lng
   
