@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
@@ -15,28 +16,24 @@ router.get('/', function(req, res, next) {
   res.render('index', {user: res.locals.user, lat: lat, lng: lng });
 });
 
-// RECEIVES LAT/LNG FROM CLIENT
+// RECEIVE LAT/LNG FROM CLIENT
 router.post('/position', function(req, res, next) {
   var lat = req.body.lat.toString();
   var lng = req.body.lng.toString();
+
+  // SET LOCATION COOKIE
   req.session.lat = lat;
   req.session.lng = lng;
 
   // INVOKE FIND BATHROOMS ALGORITHM
-  // var bathroomIDs = findBathrooms.findBathrooms();
-
   var promise = new Promise(function(resolve, reject) {
-    knex('bathrooms').then(function(bathrooms) {
-      resolve(bathrooms);
-    })
+    // var bathroomIDs = findBathrooms.findBathrooms();
+    findBathrooms.findBathrooms(lat, lng, 1, resolve);
   })
 
-  promise.then(function(bathrooms) {
-    // console.log(bathrooms);
-    var bathroomIDs = [];
-    for (var i = 0; i < bathrooms.length; i++) {
-      bathroomIDs[i] = bathrooms[i].id
-    }
+  // RECEIVE ARRAY OF IDS OF CLOSEST BATHROOMS, ADD TO COOKIE
+  promise.then(function(bathroomIDs) {
+    console.log('cookie set');
     req.session.bathrooms = bathroomIDs;
     res.redirect('/main');
   })
@@ -48,7 +45,7 @@ router.get('/main', function(req, res, next) {
   var bathArr = req.session.bathrooms;
 
   knex('bathrooms').whereIn('id', bathArr).then(function(bathrooms) {
-    res.render('main', {lat: req.session.lat, lng: req.session.lng, bathrooms: bathrooms, username: name});
+    res.render('main', {lat: req.session.lat, lng: req.session.lng, key: process.env.GOOGLEMAPS_API_KEY, bathrooms: bathrooms, username: name});
   })
 })
 
@@ -70,7 +67,6 @@ router.post('/signup', function(req, res, next) {
           return Promise.resolve(Array.isArray(input) ? input[0] : input);
         })
         .then(function(id) {
-          console.log(id);
           req.session.id = id;
           res.redirect('/');
         })
@@ -104,13 +100,6 @@ router.post('/signout', function (req, res, next) {
   req.session = null;
   res.redirect('/');
 });
-
-router.post('/findbathrooms', function (req, res, next){
-  res.redirect('main');
-});
-
-
-// REDIRECT MEMBER GOING TO SIGIN/signup
 
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER

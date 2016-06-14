@@ -4,11 +4,24 @@
 // 3) findBathrooms must send location to map on main page.
 // 4) findBathrooms must pick a set number of the closest bathrooms to display
 
+// KEY:
+// d = destination
+// o = origin
+//   (ie. origin latitude, destination longitude)
+// Hi = upper end of range of coordinates
+// Lo = lower end of range
+
+require('dotenv').config();
 var knex = require('./db/knex');
 
-// findBathrooms(40.017835399999996, -105.2820569);
+// findBathrooms(40, -105, 0.5);
 
-function findBathrooms(cLat, cLng) {
+var oLatHi;
+var oLatLo;
+var oLngHi;
+var oLngLo;
+
+function findBathrooms(oLat, oLng, x, resolve) {
 
   // CLEVER ALGORITHM
   // 1) use coordinates to generate square range, (ie. rangeUpperLimit = position + 0.05 miles)
@@ -16,32 +29,69 @@ function findBathrooms(cLat, cLng) {
   // 3) if number exceeds desired list length (ie. ten bathrooms), run google distance matrix and return closest
   // 4) if not, rerun at next smallest range (ie. 0.5 miles)
 
-  var cLatHi = cLat + 1;
-  var cLatLo = cLat - 1;
-  var cLngHi = cLng + 1;
-  var cLngLo = cLng - 1;
+  // oLatHi = oLat + x;
+  // oLatLo = oLat - x;
+  // oLngHi = oLng + x;
+  // oLngLo = oLng - x;
+  // var mode = "walking";
+  //
+  // // SET COORDINATE RANGE TO SEARCH
+  // knex('bathrooms').whereBetween('lat', [oLatLo, oLatHi]).andWhereBetween('lng', [oLngLo, oLngHi]).then(function(bathrooms){
+  //
+  //   // IF NOT ENOUGH BATHROOMS, WIDEN RANGE, REPEAT UNTIL THERE ARE ENOUGH BATHROOMS
+  //   if (bathrooms.length < 3) {
+  //     findBathrooms(oLat, oLng, resolve, x + 0.1)
+  //   } else {
+  //
+  //     // MAKE A SEARCH STRING OF ALL BATHROOM LAT/LNGS
+  //     var queryLatLngs;
+  //     for (var i = 0; i < bathrooms.length; i++) {
+  //       if (queryLatLngs){
+  //         queryLatLngs = queryLatLngs + bathrooms[i].lat.toString() + ',';
+  //       } else {
+  //         queryLatLngs = bathrooms[i].lat.toString() + ',';
+  //       }
+  //       if (i < bathrooms.length - 1) {
+  //         queryLatLngs = queryLatLngs + bathrooms[i].lat.toString() + '|';
+  //       } else {
+  //         queryLatLngs = queryLatLngs + bathrooms[i].lat.toString();
+  //       }
+  //     }
+  //
+  //   // RUN GOOGLE DISTANCE MATRIX ON EACH BATHROOM
+  //   var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + oLat + ',' + oLng + '&destinations=' + queryLatLngs + '&mode=' + mode + '&language=en-EN&key=' + process.env.GOOGLEMAPS_API_KEY;
+  //
+  //
+  //   request.get(url)
+  //       .on('response', function(response) {
+  //           console.log(response.statusCode) // 200
+  //           console.log(response.headers['content-type']) // 'image/png'
+  //       })
+  //       .pipe(request.put('http://mysite.com/img.png'))
+  //
+  //   // SORT BY DISTANCE
+  //   //
+  //
+  //   // MAKE AN ARRAY OF THE RESULTING BATHROOMS
+  //   var bathroomIDs = [];
+  //   for (var i = 0; i < bathrooms.length; i++) {
+  //     bathroomIDs[i] = bathrooms[i].id
+  //   }
+  //   console.log(bathroomIDs);
+  //   // resolve(bathroomIDs);
+  // })
+  // }
 
-  // console.log(cLatHi);
-  // console.log(typeof(cLatHi));
-  // console.log(cLatLo);
-  // console.log(typeof(cLatLo));
-
-  knex('bathrooms').where({id: 1}).then(function(bathroom) {
-    console.log(bathroom);
-
-
-      // knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first().then(function(bathroom){
-      // knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first().then(function(bathroom){
-      // knex('bathrooms').where({lat: [cLatHi, cLatLo], lng: [cLngHi, cLngLo]}).first().then(function(bathroom){
-      // console.log(bathroom);
-      // })
-
-      // knex('bathrooms').then(function(bathrooms) {
-      //   return bathrooms;
-      // })
+  // WORKING
+  knex('bathrooms').then(function(bathrooms) {
+    var bathroomIDs = [];
+    for (var i = 0; i < bathrooms.length; i++) {
+      bathroomIDs[i] = bathrooms[i].id
+    }
+    resolve(bathroomIDs);
   })
 }
 
-  module.exports = {
-    findBathrooms: findBathrooms
-  }
+module.exports = {
+  findBathrooms: findBathrooms
+}
