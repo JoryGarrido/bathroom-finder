@@ -29,13 +29,10 @@ router.post('/position', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
+  var name = res.locals.user.username;
   console.log("router: " + req.session.lat);
-  res.render('main', {lat: req.session.lat, lng: req.session.lng});
+  res.render('main', {lat: req.session.lat, lng: req.session.lng, username: name});
 })
-
-router.get('/signup', function(req, res, next) {
-  res.render('signup');
-});
 
 router.post('/signup', function(req, res, next) {
   var password = bcrypt.hashSync(req.body.password, 8);
@@ -68,10 +65,6 @@ router.post('/signup', function(req, res, next) {
     });
 })
 
-router.get('/signin', function(req, res, next) {
-  res.render('signin');
-});
-
 router.post('/signin', function(req, res, next) {
   knex('users')
     .where({username: req.body.username.toLowerCase()})
@@ -82,17 +75,21 @@ router.post('/signin', function(req, res, next) {
       }
       if (bcrypt.compareSync(req.body.password, data.password)) {
         req.session.id = data.id;
-        res.redirect('/');
+        res.redirect('/main');
       } else {
         res.render('signinfail')
       }
     });
 });
 
-router.get('/signout', function (req, res, next) {
+router.post('/signout', function (req, res, next) {
   req.session = null;
   res.redirect('/');
-})
+});
+
+router.post('/findbathrooms', function (req, res, next){
+  res.redirect('main');
+});
 
 
 // REDIRECT MEMBER GOING TO SIGIN/signup

@@ -1,9 +1,0 @@
-extends layout
-block content
-
-  h2 Sorry, this username is already taken
-    form(action='/users/signup' method='POST')
-      input(type="text" name="username" placeholder="username")
-      input(type="text" name="password" placeholder="password")
-      input(type="submit" value="Sign up")
-      
