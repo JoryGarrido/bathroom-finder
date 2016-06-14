@@ -43,7 +43,7 @@ div.stars {
 .menu-wrap {
   width: 100%;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  background: #000000; }
+  background: #2E2633; }
 
 .menu {
   display: flex;
@@ -164,21 +164,19 @@ div.stars {
     align-self: flex-end;
     margin-right: 20px; }
 
-main {
-  margin-left: 5px;
-  margin-right: 5px; }
-
 #banner {
+  display: flex;
+  flex-direction: column;
   height: 400px;
   text-align: center;
-  background-color: #008161; }
+  background-color: #DCE9BE; }
 
 #description {
   width: 80%;
   height: 40%;
   display: flex;
+  text-align: center;
   margin: auto;
-  margin-top: 10px;
   background: rgba(255, 255, 255, 0.25) border-box;
   overflow: hidden;
   border-radius: .3em;
@@ -186,19 +184,22 @@ main {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3); }
 
 #locate {
-  margin-top: 10%;
   width: 200px;
-  height: 50px; }
+  height: 50px;
+  background-color: #99173C;
+  color: white;
+  margin-bottom: 20px; }
 
 #teamInfo {
   height: 400px;
   display: flex;
   justify-content: space-around;
-  background-color: #008161; }
+  background-color: white; }
 
 .info {
   width: 30%;
-  background-color: #2AD4AA; }
+  background-color: white;
+  color: #555152; }
 
 .info img {
   margin-top: 20px;
@@ -206,7 +207,7 @@ main {
   display: flex;
   margin: auto;
   margin-top: 20px;
-  border-color: #000000; }
+  border: 5px solid #99173C; }
 
 .info p {
   text-align: center;
@@ -217,20 +218,16 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #008161; }
+  background-color: #DCE9BE; }
 
 .icon {
   margin: 5px; }
 
 #footer {
   height: 80px;
-  border: 1px #00D09C solid;
   text-align: center;
-  background-color: black;
+  background-color: #2E2633;
   color: white; }
-
-#footer p {
-  margin-top: 5px; }
 
 #moreInfo {
   flex-direction: column;
