@@ -24,11 +24,13 @@ router.post('/position', function(req, res, next) {
   // SET LOCATION COOKIE
   req.session.lat = lat;
   req.session.lng = lng;
+  // lat = parseFloat(lat);
+  // lng = parseFloat(lng);
+
 
   // INVOKE FIND BATHROOMS ALGORITHM
   var promise = new Promise(function(resolve, reject) {
-    // var bathroomIDs = findBathrooms.findBathrooms();
-    findBathrooms.findBathrooms(lat, lng, 1, resolve);
+    findBathrooms.findBathrooms(lat, lng, 0.4, resolve);
   })
 
   // RECEIVE ARRAY OF IDS OF CLOSEST BATHROOMS, ADD TO COOKIE
@@ -43,9 +45,14 @@ router.post('/position', function(req, res, next) {
 router.get('/main', function(req, res, next) {
   var name = res.locals.user.username;
   var bathArr = req.session.bathrooms;
-
-  knex('bathrooms').whereIn('id', bathArr).then(function(bathrooms) {
-    res.render('main', {lat: req.session.lat, lng: req.session.lng, key: process.env.GOOGLEMAPS_API_KEY, bathrooms: bathrooms, username: name});
+  var IDs = [];
+  for (var i = 0; i < bathArr.length; i++) {
+    IDs[i] = bathArr[i][0]
+  }
+  console.log(IDs);
+  knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
+    console.log(bathrooms);
+    res.render('main', {lat: req.session.lat, lng: req.session.lng, key: process.env.GOOGLEMAPS_API_KEY, bathrooms: bathrooms, distances: IDs, username: name});
   })
 })
 
