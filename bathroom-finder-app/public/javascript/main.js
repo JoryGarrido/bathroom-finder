@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var signin = document.getElementById("signin");
   var signup = document.getElementById("signup");
   var addBathroom = document.getElementById("AddABathroom");
+  var title = document.getElementById("title");
 
   document.getElementById("login").addEventListener('click', function(){
     signin.style.display = "flex";
@@ -33,9 +34,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
       addBathroom.style.display = "flex";
     });
   }
-  
+
 
   document.getElementById('addBathroomButton').addEventListener('click', function(){
     addBathroom.style.display = "flex";
   });
+
+// THIS DOESNT WORK
+  title.addEventListener('click', function(){
+    window.location = "localhost:3000";
+  });
+// ----------------
 });

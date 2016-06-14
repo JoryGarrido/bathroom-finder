@@ -102,6 +102,10 @@ router.post('/signout', function (req, res, next) {
 });
 
 
+router.get('/moreinfo', function(req, res, next){
+  res.render('moreinfo');
+})
+
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER
 // function renderGuest(req, res, next) {
 //   if (!req.session.id) {
