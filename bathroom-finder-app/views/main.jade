@@ -18,6 +18,7 @@ block content
   p(class="hidden" id="lng")= lng
   
   script(src="/javascript/initMap.js")
+<<<<<<< HEAD
   script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMR72LZK1TzznEiG9LqMJtEvfafaLtMhE&callback=initMap" async defer)
 
   
@@ -54,3 +55,6 @@ block content
       h3 Comments
       #comments
         | push comments into this div
+=======
+  script(src="https://maps.googleapis.com/maps/api/js?key=" + #{key} + "&callback=initMap" async defer)
+>>>>>>> mainLayout
