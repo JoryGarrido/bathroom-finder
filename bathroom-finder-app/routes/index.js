@@ -45,8 +45,11 @@ router.post('/position', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
   var name = res.locals.user.username;
-  console.log(req.session);
-  res.render('main', {lat: req.session.lat, lng: req.session.lng, username: name});
+  var bathArr = req.session.bathrooms;
+
+  knex('bathrooms').whereIn('id', bathArr).then(function(bathrooms) {
+    res.render('main', {lat: req.session.lat, lng: req.session.lng, bathrooms: bathrooms, username: name});
+  })
 })
 
 router.post('/signup', function(req, res, next) {
