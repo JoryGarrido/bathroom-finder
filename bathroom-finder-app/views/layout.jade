@@ -6,18 +6,21 @@ html
   script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
   script(src="/javascript/nav.js")
   script(src="/javascript/main.js")
-
   header
     div.menu-wrap
       nav.menu
         ul
           li
-            a#login Login
+            if username
+              a#login= username
+            else
+              a#login Login
             ul#sub-menu
               li 
                 a(href='#') Edit Account
               li
-                a(href='/signout') Signout
+                form(action="/signout" method='POST') 
+                  input(type='submit' value='Signout')  
         ul
           li#title Bathroom_Finder
         ul
@@ -32,10 +35,12 @@ html
       form(action='/signin' method='POST')
         label
           p Username
-        input(type="text")
+        input(type="text" name="username")
         label
           p Password
-        input(type="password")
+        input(type="password" name="password")
+        p
+        input(type="submit")
         p not a user? 
           a#signupButton(href="#") Sign up
           
@@ -49,10 +54,11 @@ html
       form(action='/signup' method='POST')
         label
           p Username
-        input(type="text")
+        input(type="text" name="username")
         label
           p Password
-        input(type="password")
+        input(type="password" name="password")
+        input(type="submit")
         p Have an account? 
           a(href="#" id="signinButton") Sign In    
 
@@ -93,3 +99,12 @@ html
       button Sign Up With Facebook      
 
   block content
+  
+  #footer
+    p
+      | BathroomFinder
+      span ™
+      br
+      span#divide ✦
+      br
+      | Created By: Ian, Jory Blaze and KC
