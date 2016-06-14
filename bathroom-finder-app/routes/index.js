@@ -45,19 +45,8 @@ router.post('/position', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
   var name = res.locals.user.username;
-  var bathArr = req.session.bathrooms;
-
-  // knex('bathrooms').then(function(bathrooms) {
-  // knex('bathrooms').where(knex.raw('id = ?', [bathArr])).then(function(bathrooms) {
-  knex('bathrooms').where('id', bathArr).then(function(bathrooms) {
-  //   console.log(bathArr);
-    res.render('main', {lat: req.session.lat, lng: req.session.lng, bathrooms: bathrooms, username: name});
-  //   console.log(bathrooms);
-  })
-
-  // res.render('main', {lat: req.session.lat, lng: req.session.lng, username: name});
-  console.log(bathArr + "blah");
-
+  console.log(req.session);
+  res.render('main', {lat: req.session.lat, lng: req.session.lng, username: name});
 })
 
 router.post('/signup', function(req, res, next) {
