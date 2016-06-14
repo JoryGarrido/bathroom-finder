@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
     })
   } else {
     res.locals.user = {
-      username: "Guest"
+      username: "Login"
     };
     next();
   }

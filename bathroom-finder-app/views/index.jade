@@ -5,7 +5,8 @@ block content
     #banner
       p#description
         | We just want to make sure you find a nice and tidy place to do your business. We know that there is nothing worse than a bathroom that looks like a murder scene. So hit the find bathroom button and relieve yourself with peace of mind.
-      button#locate Find Bathrooms
+      form(action="/findbathrooms" method="POST")
+        button#locate Find Bathrooms
     #teamInfo
       #ian.info
         img(src='http://lorempixel.com/image_output/sports-q-c-250-250-7.jpg')
@@ -23,11 +24,4 @@ block content
         img(src='/images/1465798043_twitter_social_media_online_logo.png')
       a(href='https://www.google.com/').icon
         img(src='/images/1465798465_google_plus_social_media_online_logo.png')
-    #footer
-      p
-        | BathroomFinder
-        span ™
-        br
-        span#divide ✦
-        br
-        | Created By: Ian, Jory Blaze and KC
+    
