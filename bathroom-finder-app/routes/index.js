@@ -23,14 +23,29 @@ router.post('/position', function(req, res, next) {
   req.session.lng = lng;
 
   // INVOKE FIND BATHROOMS ALGORITHM
-  findBathrooms.findBathrooms(lat, lng);
-  console.log(bathrooms);
-  res.render('index', {bathrooms: bathrooms});
+  // var bathroomIDs = findBathrooms.findBathrooms();
+
+  var promise = new Promise(function(resolve, reject) {
+    knex('bathrooms').then(function(bathrooms) {
+      resolve(bathrooms);
+    })
+  })
+
+  promise.then(function(bathrooms) {
+    // console.log(bathrooms);
+    var bathroomIDs = [];
+    for (var i = 0; i < bathrooms.length; i++) {
+      bathroomIDs[i] = bathrooms[i].id
+    }
+    req.session.bathrooms = bathroomIDs;
+    res.redirect('/main');
+  })
 });
+
 
 router.get('/main', function(req, res, next) {
   var name = res.locals.user.username;
-  console.log("router: " + req.session.lat);
+  console.log(req.session);
   res.render('main', {lat: req.session.lat, lng: req.session.lng, username: name});
 })
 

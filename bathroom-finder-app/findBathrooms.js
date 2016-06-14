@@ -6,7 +6,7 @@
 
 var knex = require('./db/knex');
 
-findBathrooms(40.017835399999996, -105.2820569);
+// findBathrooms(40.017835399999996, -105.2820569);
 
 function findBathrooms(cLat, cLng) {
 
@@ -26,18 +26,22 @@ function findBathrooms(cLat, cLng) {
   // console.log(cLatLo);
   // console.log(typeof(cLatLo));
 
-  // knex('bathrooms').where('id', 2).first().then(function(bathroom){
-  // knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first().then(function(bathroom){
-  // knex('bathrooms').where({lat: [cLatHi, cLatLo], lng: [cLngHi, cLngLo]}).first().then(function(bathroom){
-    // console.log(bathroom);
-  // })
+  knex('bathrooms').where({id: 1}).then(function(bathroom) {
+    console.log(bathroom);
 
-  knex('bathrooms').then(function(bathrooms) {
-    return bathrooms;
+
+      // knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first().then(function(bathroom){
+      // knex('bathrooms').where('lat', [cLatHi, cLatLo]).andWhere('lng', [cLngHi, cLngLo]).first().then(function(bathroom){
+      // knex('bathrooms').where({lat: [cLatHi, cLatLo], lng: [cLngHi, cLngLo]}).first().then(function(bathroom){
+      // console.log(bathroom);
+      // })
+
+      // knex('bathrooms').then(function(bathrooms) {
+      //   return bathrooms;
+      // })
   })
-
 }
 
-module.exports = {
-  findBathrooms: findBathrooms
-}
+  module.exports = {
+    findBathrooms: findBathrooms
+  }
