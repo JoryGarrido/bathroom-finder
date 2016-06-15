@@ -28,7 +28,7 @@ router.post('/position', function(req, res, next) {
 
   // INVOKE FIND BATHROOMS ALGORITHM
   var promise = new Promise(function(resolve, reject) {
-    findBathrooms.findBathrooms(lat, lng, 0.4, resolve);
+    findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
 
   // RECEIVE ARRAY OF IDS OF CLOSEST BATHROOMS, ADD TO COOKIE
@@ -39,29 +39,32 @@ router.post('/position', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
-  console.log("ok");
   var name = res.locals.user.username;
   var bathArr = req.session.bathrooms;
   var IDs = [];
+  var sendArray = [];
   for (var i = 0; i < bathArr.length; i++) {
-    IDs[i] = bathArr[i][0]
+    IDs[i] = bathArr[i][0];
   }
 
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
 
-
-    // RUN SORT ALGORITHM
-    // var idDistance = ajaxArray.sort(function(a, b) {
-    //   return a[1] - b[1];
-    // })
-
+    // LOOP ORDER FROM bathArr, APPLY TO bathrooms
+    for (var i = 0; i < bathArr.length; i++) {
+      for (var j = 0; j < bathrooms.length; j++) {
+        if (bathrooms[j].id === bathArr[i][0]) {
+          sendArray.push(bathrooms[j]);
+          bathrooms[j].distance = bathArr[i][1];
+        }
+      }
+    }
+    console.log(sendArray);
     res.render('main', {
       lat: req.session.lat,
       lng: req.session.lng,
       key: process.env.GOOGLEMAPS_API_KEY,
       username: name,
-      bathrooms: bathrooms,
-      distances: IDs
+      bathrooms: sendArray
     });
   })
 })

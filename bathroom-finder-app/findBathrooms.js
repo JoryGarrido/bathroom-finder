@@ -8,11 +8,9 @@ var oLngHi;
 var oLngLo;
 
 function findBathrooms(oLat, oLng, x, resolve) {
-  console.log("running");
 
   oLat = parseFloat(oLat);
   oLng = parseFloat(oLng);
-
   oLatHi = oLat + x;
   oLatLo = oLat - x;
   oLngHi = oLng + x;
@@ -24,8 +22,8 @@ function findBathrooms(oLat, oLng, x, resolve) {
   knex('bathrooms').whereBetween('lat', [oLatLo, oLatHi]).andWhereBetween('lng', [oLngLo, oLngHi]).then(function(bathrooms) {
 
     // IF NOT ENOUGH BATHROOMS, WIDEN RANGE, REPEAT UNTIL THERE ARE ENOUGH BATHROOMS
-    if (bathrooms.length < 3) {
-      findBathrooms(oLat, oLng, resolve, x + 0.1)
+    if (bathrooms.length < 5) {
+      findBathrooms(oLat, oLng, x + 0.1, resolve)
     } else {
 
       // MAKE A SEARCH STRING OF ALL BATHROOM LAT/LNGS
@@ -56,9 +54,16 @@ function findBathrooms(oLat, oLng, x, resolve) {
             ajaxArray[i][0] = bathrooms[i].id;
             ajaxArray[i][1] = result.rows[0].elements[i].distance.value;
           }
-        }
 
-        resolve(ajaxArray);
+          // RUN SORTING ALGORITHM
+          var idDistance = ajaxArray.sort(function(a, b) {
+            return a[1] - b[1];
+          })
+
+          // LIMIT TO FIRST 10 BATHROOMS
+          // result = idDistance.slice(0,10);
+        }
+        resolve(idDistance);
       })
     }
   })
