@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
@@ -16,41 +17,51 @@ router.get('/', function(req, res, next) {
   res.render('index', {user: res.locals.user, lat: lat, lng: lng });
 });
 
-// RECEIVES LAT/LNG FROM CLIENT
+// RECEIVE LAT/LNG FROM CLIENT
 router.post('/position', function(req, res, next) {
   var lat = req.body.lat.toString();
   var lng = req.body.lng.toString();
+
+  // SET LOCATION COOKIE
   req.session.lat = lat;
   req.session.lng = lng;
 
   // INVOKE FIND BATHROOMS ALGORITHM
-  // var bathroomIDs = findBathrooms.findBathrooms();
-
   var promise = new Promise(function(resolve, reject) {
-    knex('bathrooms').then(function(bathrooms) {
-      resolve(bathrooms);
-    })
+    findBathrooms.findBathrooms(lat, lng, 0.4, resolve);
   })
 
-  promise.then(function(bathrooms) {
-    // console.log(bathrooms);
-    var bathroomIDs = [];
-    for (var i = 0; i < bathrooms.length; i++) {
-      bathroomIDs[i] = bathrooms[i].id
-    }
+  // RECEIVE ARRAY OF IDS OF CLOSEST BATHROOMS, ADD TO COOKIE
+  promise.then(function(bathroomIDs) {
     req.session.bathrooms = bathroomIDs;
     res.redirect('/main');
   })
 });
 
-
 router.get('/main', function(req, res, next) {
   console.log("ok");
   var name = res.locals.user.username;
   var bathArr = req.session.bathrooms;
+  var IDs = [];
+  for (var i = 0; i < bathArr.length; i++) {
+    IDs[i] = bathArr[i][0]
+  }
 
-  knex('bathrooms').whereIn('id', bathArr).then(function(bathrooms) {
-    res.render('main', {lat: req.session.lat, lng: req.session.lng, bathrooms: bathrooms, username: name});
+  knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
+
+    // RUN SORT ALGORITHM
+    var idDistance = ajaxArray.sort(function(a, b) {
+      return a[1] - b[1];
+    })
+    
+    res.render('main', {
+      lat: req.session.lat,
+      lng: req.session.lng,
+      key: process.env.GOOGLEMAPS_API_KEY,
+      username: name,
+      bathrooms: bathrooms,
+      distances: IDs
+    });
   })
 })
 
@@ -72,7 +83,6 @@ router.post('/signup', function(req, res, next) {
           return Promise.resolve(Array.isArray(input) ? input[0] : input);
         })
         .then(function(id) {
-          console.log(id);
           req.session.id = id;
           res.redirect('/');
         })
@@ -107,11 +117,10 @@ router.post('/signout', function (req, res, next) {
   res.redirect('/');
 });
 
+
 router.get('/moreinfo', function(req, res, next){
   res.render('moreinfo');
 })
-// REDIRECT MEMBER GOING TO SIGIN/signup
-
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER
 // function renderGuest(req, res, next) {

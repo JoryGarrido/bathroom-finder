@@ -169,7 +169,8 @@ div.stars {
   flex-direction: column;
   height: 400px;
   text-align: center;
-  background-color: #DCE9BE; }
+  background-image: url(/images/AdobeStock_63967942.jpeg);
+  background-size: 100vw 400px; }
 
 #description {
   width: 80%;
@@ -196,6 +197,9 @@ div.stars {
   justify-content: space-around;
   background-color: white; }
 
+#teamInfo h3 {
+  text-align: center; }
+
 .info {
   width: 30%;
   background-color: white;
@@ -204,6 +208,8 @@ div.stars {
 .info img {
   margin-top: 20px;
   border-radius: 50%;
+  height: 220px;
+  width: 220px;
   display: flex;
   margin: auto;
   margin-top: 20px;
@@ -229,24 +235,20 @@ div.stars {
   background-color: #2E2633;
   color: white; }
 
-#moreInfo {
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
-  text-align: center;
-  z-index: 200;
-  border: 10px solid #00D09C;
-  height: 50vh;
-  width: 50vw;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.2); }
+#details {
+  text-align: center; }
+
+#basicInfo {
+  text-align: center; }
 
 #attributes {
   display: flex;
   justify-content: space-around; }
+
+#commentField {
+  text-align: center; }
+
+#comments {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
