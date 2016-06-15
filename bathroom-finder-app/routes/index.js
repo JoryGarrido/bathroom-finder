@@ -57,7 +57,7 @@ router.get('/main', function(req, res, next) {
         }
       }
     }
-    console.log(sendArray);
+
     res.render('main', {
       lat: req.session.lat,
       lng: req.session.lng,
@@ -72,6 +72,8 @@ router.get('/bathrooms', function (req, res, next) {
   var object;
   var name = res.locals.user.username;
   var bathArr = req.session.bathrooms;
+  var lat = req.session.lat;
+  var lng = req.session.lng;
   var IDs = [];
   var sendArray = [];
   for (var i = 0; i < bathArr.length; i++) {
@@ -88,7 +90,8 @@ router.get('/bathrooms', function (req, res, next) {
         }
       }
     }
-    res.json({ bathrooms: sendArray });
+    console.log(name);
+    res.json({ bathrooms: sendArray, name: name, lat: lat, lng: lng});
   })
 });
 
@@ -150,12 +153,12 @@ router.get('/moreinfo', function(req, res, next){
 })
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER
-// function renderGuest(req, res, next) {
-//   if (!req.session.id) {
-//     res.redirect('/');
-//   }
-//   next();
-// }
+function verifyUser(req, res, next) {
+  if (!req.session.id) {
+    res.redirect('/');
+  }
+  next();
+}
 
 
 router.get('/auth/facebook', passport.authenticate('facebook'));

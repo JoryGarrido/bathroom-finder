@@ -2,6 +2,8 @@
   return knex.schema.createTable('users', function(table) {
     table.increments('id').primary();
     table.string('username').unique().notNullable();
+    // table.string('facebookId').unique;
+    // table.string('accesstoken');
     table.string('password').notNullable();
     table.boolean('isAdmin').notNullable().defaultTo(false);
   });

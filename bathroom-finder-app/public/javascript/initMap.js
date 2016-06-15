@@ -9,18 +9,19 @@ function initMap() {
 
     queryRequest.done(function(data) {
       var bathrooms = data.bathrooms;
-      drawMap(bathrooms);
+      console.log(data);
+      drawMap(data);
     })
   })
 }
 
-// GET COORDINATES FROM THE DOM
-var lat = parseFloat(document.getElementById('lat').innerText);
-var lng = parseFloat(document.getElementById('lng').innerText);
-var zoom = 19;
-
 // INITIALIZE MAP BASED ON CURRENT LOCATION
-function drawMap(bathrooms) {
+function drawMap(data) {
+  var bathrooms = data.bathrooms;
+  var lat = parseFloat(data.lat);
+  var lng = parseFloat(data.lng);
+  var zoom = 19;
+
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {
       lat: lat,
@@ -31,18 +32,15 @@ function drawMap(bathrooms) {
 
   var marker = new google.maps.Marker({
     position: {
-      lat: 40.0178,
-      lng: -105.282
+      lat: lat,
+      lng: lng
     },
     map: map,
     title: 'current'
   });
 
-  console.log(bathrooms);
-
   for (var i = 0; i < bathrooms.length; i++) {
     num = (i + 1).toString();
-    console.log(num);
     var marker = new google.maps.Marker({ position: { lat: bathrooms[i].lat, lng: bathrooms[i].lng },
       map: map, title: num, label: num
     });
