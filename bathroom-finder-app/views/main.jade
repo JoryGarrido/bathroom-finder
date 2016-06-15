@@ -6,52 +6,29 @@ block content
     each bathroom in bathrooms
       div(class="listItem")
         div(class="halfList")
+<<<<<<< HEAD
           div(class="stars")= bathroom.rating
           p(class="listTitle")= bathroom.bathroomname
             span  -- 
             span= bathroom.distance 
             span  meters
+=======
+          div(class="rating stars")
+            span(class="star1") &#9734
+            span(class="star2") &#9734
+            span(class="star3") &#9734
+            span(class="star4") &#9734
+            span(class="star5") &#9734
+          p(class="listTitle")= bathroom.bathroomname 
+>>>>>>> 6b5234a00b051c33b30398201095b1023f9a1f78
           p= bathroom.directions
         div(class="halfList")
+        div(class="starNumber")= bathroom.rating
+
   
   
   p(class="hidden" id="lat")= lat
   p(class="hidden" id="lng")= lng
-
-  
-  body
-    #moreInfo
-      #basicInfo
-        h3 Placeholder for Bathroom Name
-        p Average Rating: show stars (average number)
-        p Location: Address?
-        p Details:
-        p Directions from DB
-      h3 Details
-      #attributes
-        #left
-          p
-            strong Mens Changing Table:
-            |  Yes/No
-          p
-            strong Customers Only:
-            |  Yes/No
-          p
-            strong Unisex:
-            |  Yes/No
-        #right
-          p
-            strong Womans Changing Table:
-            |  Yes/No
-          p
-            strong Hours:
-            |  From DB
-          p
-            strong Multi or Single Stall:
-            |  Multi/Single
-      h3 Comments
-      #comments
-        | push comments into this div
 
   script(src="/javascript/initMap.js")
   script(src="https://maps.googleapis.com/maps/api/js?key=#{key}&callback=initMap" async defer)

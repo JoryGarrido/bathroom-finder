@@ -2,6 +2,7 @@ doctype html
 html
   head
   meta(name="viewport" content="initial-scale=1.0")
+  link(href='https://fonts.googleapis.com/css?family=Roboto+Slab', rel='stylesheet', type='text/css')
   link(rel="stylesheet", href='/stylesheets/style.css')
   script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
   script(src="/javascript/nav.js")
@@ -9,7 +10,7 @@ html
   header
     div.menu-wrap
       nav.menu
-        ul
+        ul.link
           li
             if username
               a#login= username
@@ -22,8 +23,8 @@ html
                 form(action="/signout" method='POST') 
                   input(type='submit' value='Signout')  
         ul
-          li#title Bathroom_Finder
-        ul
+          li#title PottySpotter
+        ul.link
           li
             a#addBathroomButton Add Bathroom
   body      
@@ -101,7 +102,7 @@ html
   
   #footer
     p
-      | BathroomFinder
+      | PottySpotter
       span ™
       br
       span#divide ✦
