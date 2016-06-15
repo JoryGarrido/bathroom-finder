@@ -35,7 +35,7 @@ app.use(cookieSession(
 ))
 
 app.use(function(req, res, next) {
-  console.log(res.locals.user);
+  // console.log("user",res.locals.user);
   if (req.session.id) {
     knex('users')
     .where({id: req.session.id})
@@ -98,14 +98,20 @@ app.use(function(err, req, res, next) {
 passport.use(new FacebookStrategy({
     clientID: '141550522930397',
     clientSecret: 'd9b7fb6f4fca0d8a3ef462c010324fa5',
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log("hello?");
+    // Check if FB_Id exists, if not, add it to the users table
+    // Add accessToken
+    // Display_Name
+    // if (err){
+    //   done(null, false){
+    //     console.log();
+    //   }
+    // }
     console.log(profile);
-    console.log(accessToken);
-    console.log(done);
-    done(null);
+    done(null, user);
   }
 ));
 

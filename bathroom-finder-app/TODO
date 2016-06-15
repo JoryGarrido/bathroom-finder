@@ -1,0 +1,19 @@
+
+DONE 2. Pins - IS
+DONE 8. Add logo - KC
+DONE 10. Fix signout button - JBG
+DONE 11. Remove the Edit Account button
+
+STYLING Style Sign in/Sign up
+STYLING Style the bathroom details page - KB
+
+BUG 9. When signed in, do not allow the named button to sign you in again
+BUG Fix lat long accuracy
+
+FEATURE oAuth
+FEATURE Fix Add a Bathroom form - KB
+FEATURE Add a bathroom View - KB
+FEATURE Add the button to the list of bathrooms to view the bathroom details
+FEATURE Add attributes of bathroom to bathroom list - JBG
+FEATURE Add Admin View and allow it to delete things from the database
+FEATURE Allow users to edit their reviews for UPDATE

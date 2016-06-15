@@ -6,13 +6,6 @@ block content
     each bathroom in bathrooms
       div(class="listItem")
         div(class="halfList")
-<<<<<<< HEAD
-          div(class="stars")= bathroom.rating
-          p(class="listTitle")= bathroom.bathroomname
-            span  -- 
-            span= bathroom.distance 
-            span  meters
-=======
           div(class="rating stars")
             span(class="star1") &#9734
             span(class="star2") &#9734
@@ -20,9 +13,18 @@ block content
             span(class="star4") &#9734
             span(class="star5") &#9734
           p(class="listTitle")= bathroom.bathroomname 
->>>>>>> 6b5234a00b051c33b30398201095b1023f9a1f78
           p= bathroom.directions
         div(class="halfList")
+          if bathroom.menschangingtable == true
+            p Men's Changing Table
+          if bathroom.womanschangingtable == true
+            p Women's Changing table
+          if bathroom.unisex == true
+            p Unisex
+          if bathroom.customersonly == true
+            p Customers Only
+          if bathroom.private == true
+            p Private    
         div(class="starNumber")= bathroom.rating
 
   

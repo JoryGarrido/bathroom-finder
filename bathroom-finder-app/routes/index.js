@@ -10,11 +10,18 @@ var findBathrooms = require('../findBathrooms')
 router.get('/', function(req, res, next) {
   var lat;
   var lng;
+  var name = res.locals.user.username;
   if (req.session.lat) {
     lat = req.session.lat
     lng = req.session.lng
   }
-  res.render('index', {user: res.locals.user, lat: lat, lng: lng });
+  res.render('index',
+    {
+      user: res.locals.user,
+      lat: lat,
+      lng: lng,
+      username: name
+     });
 });
 
 // RECEIVE LAT/LNG FROM CLIENT
@@ -58,7 +65,6 @@ router.get('/main', function(req, res, next) {
         }
       }
     }
-    console.log(sendArray);
     res.render('main', {
       lat: req.session.lat,
       lng: req.session.lng,
@@ -136,6 +142,9 @@ router.get('/moreinfo', function(req, res, next){
 
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/connect/facebook', passport.authorize('facebook', { scope : ['email'] }));
+
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main', failureRedirect: '/users' }));
 
