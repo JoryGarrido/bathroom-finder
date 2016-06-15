@@ -225,7 +225,8 @@ main {
   flex-direction: column;
   height: 400px;
   text-align: center;
-  background-color: $hex;
+  background-image: url(/images/AdobeStock_63967942.jpeg);
+  background-size: 100vw 400px;
 }
   #description {
     width:80%;
@@ -247,12 +248,14 @@ main {
     margin-bottom: 20px;
   }
 #teamInfo {
-
   height: 400px;
   display: flex;
   justify-content: space-around;
   background-color: white;
 }
+  #teamInfo h3{
+    text-align: center;
+  }
   .info {
     width: 30%;
     background-color: white;
@@ -261,6 +264,8 @@ main {
     .info img {
       margin-top: 20px;
       border-radius: 50%;
+      height: 220px;
+      width: 220px;
       display: flex;
       margin: auto;
       margin-top: 20px;
@@ -286,31 +291,20 @@ main {
   background-color: $eveningCloud;
   color: white;
 }
-  #footer p {
-    // margin-top: 5px;
-  }
-  // More info popup
-
-  #moreInfo {
-    // display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: white;
-    text-align: center;
-
-    z-index: 200;
-    border: 10px solid #00D09C;
-    height: 50vh;
-    width: 50vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
-  }
-    #attributes {
-      display: flex;
-      justify-content: space-around;
-    }
+  // More info viewpage
+#details{
+  text-align: center;
+}
+#basicInfo {
+  text-align: center;
+}
+#attributes {
+  display: flex;
+  justify-content: space-around;
+}
+#commentField {
+  text-align: center;
+}
+#comments {
+  text-align: center;
+}
