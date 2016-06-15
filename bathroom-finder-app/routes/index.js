@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
+var passport = require('passport');
 
 var knex = require('../db/knex');
 var findBathrooms = require('../findBathrooms')
@@ -44,6 +45,7 @@ router.post('/position', function(req, res, next) {
 
 
 router.get('/main', function(req, res, next) {
+  console.log("ok");
   var name = res.locals.user.username;
   var bathArr = req.session.bathrooms;
 
@@ -118,5 +120,11 @@ router.get('/moreinfo', function(req, res, next){
 //   }
 //   next();
 // }
+
+
+router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main', failureRedirect: '/users' }));
+
 
 module.exports = router;

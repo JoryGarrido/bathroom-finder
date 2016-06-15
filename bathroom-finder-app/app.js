@@ -10,6 +10,9 @@ var cookieSession = require('cookie-session');
 
 var knex = require('./db/knex');
 
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin')
@@ -91,6 +94,20 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+passport.use(new FacebookStrategy({
+    clientID: '141550522930397',
+    clientSecret: 'd9b7fb6f4fca0d8a3ef462c010324fa5',
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log("hello?");
+    console.log(profile);
+    console.log(accessToken);
+    console.log(done);
+    done(null);
+  }
+));
 
 
 module.exports = app;
