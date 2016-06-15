@@ -43,9 +43,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var bathroomListRatings = document.getElementsByClassName('starNumber');
   function fuckyou() {
    for (var i = 0; i < bathroomListRatings.length; i++) {
-     console.log('for');
      if(bathroomListRatings[i].innerHTML === '1'){
-       console.log('if');
        bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][0].style.display = 'inline-block';
      }
      else if( bathroomListRatings[i].innerHTML === '2'){
