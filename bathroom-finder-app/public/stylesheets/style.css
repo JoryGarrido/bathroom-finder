@@ -1,6 +1,7 @@
 html * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: 'Roboto Slab', serif; }
 
 html, body {
   height: 100%; }
@@ -34,8 +35,10 @@ div.stars {
   float: right;
   margin-right: 20px; }
 
-#title {
-  color: #c8c8c8; }
+.menu #title {
+  color: white;
+  font-size: 42px;
+  padding-top: 10px; }
 
 .hidden {
   display: none; }
@@ -43,7 +46,7 @@ div.stars {
 .menu-wrap {
   width: 100%;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  background: #2E2633; }
+  background: #3E4147; }
 
 .menu {
   display: flex;
@@ -51,20 +54,19 @@ div.stars {
   align-content: center;
   justify-content: space-around;
   height: 80px; }
-  .menu ul {
+  .menu .link {
     padding-top: 30px; }
   .menu li {
     margin: 0px;
     list-style: none; }
   .menu a {
     transition: all linear 0.15s;
-    color: #919191;
+    color: white;
     text-decoration: none; }
 
 .menu li:hover > a, .menu .current-item > a {
   text-decoration: none;
-  border-radius: 20px 20px 20px 20px;
-  color: #00D09C; }
+  color: #CBDBE0; }
 
 .menu > ul > li {
   font-size: 19px; }
@@ -72,9 +74,6 @@ div.stars {
 .menu > ul > li > a {
   display: inline-block;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4); }
-
-.menu > ul > li:hover > a, .menu > ul > .current-item > a {
-  background: grey; }
 
 #sub-menu {
   width: 160%;
@@ -86,7 +85,7 @@ div.stars {
   opacity: 0;
   transition: opacity linear 0.15s;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-  background: #2e2728; }
+  background: #3E4147; }
   #sub-menu li {
     font-size: 16px; }
   #sub-menu a {
@@ -98,9 +97,6 @@ div.stars {
   z-index: 1;
   opacity: 1; }
 
-#sub-menu li a:hover, .sub-menu .current-item a {
-  background: #3e3436; }
-
 #signin, #signup {
   display: none;
   flex-direction: column;
@@ -109,7 +105,6 @@ div.stars {
   background-color: white;
   z-index: 200;
   border: 10px solid black;
-  height: 50vh;
   width: 50vw;
   position: fixed;
   top: 50%;
@@ -129,7 +124,6 @@ div.stars {
   text-align: center;
   z-index: 200;
   border: 10px solid black;
-  height: 50vh;
   width: 50vw;
   position: fixed;
   top: 50%;
@@ -172,30 +166,25 @@ div.stars {
   background-image: url(/images/AdobeStock_63967942.jpeg);
   background-size: 100vw 400px; }
 
-#description {
-  width: 80%;
-  height: 40%;
-  display: flex;
-  text-align: center;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.25) border-box;
-  overflow: hidden;
-  border-radius: .3em;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset, 0 0.5em 1em rgba(0, 0, 0, 0.6);
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3); }
-
 #locate {
   width: 200px;
   height: 50px;
-  background-color: #99173C;
+  border-radius: 10px;
+  border: none;
+  margin-top: 250px;
+  background-color: #3E4147;
   color: white;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  font-size: 16px; }
+
+#locate:hover {
+  border: 2px solid white; }
 
 #teamInfo {
-  height: 400px;
   display: flex;
   justify-content: space-around;
-  background-color: white; }
+  background-color: white;
+  padding-bottom: 20px; }
 
 #teamInfo h3 {
   text-align: center; }
@@ -203,7 +192,7 @@ div.stars {
 .info {
   width: 30%;
   background-color: white;
-  color: #555152; }
+  color: #3E4147; }
 
 .info img {
   margin-top: 20px;
@@ -213,7 +202,10 @@ div.stars {
   display: flex;
   margin: auto;
   margin-top: 20px;
-  border: 5px solid #99173C; }
+  border: 5px solid #3E4147; }
+
+.info h3 {
+  margin-top: 10px; }
 
 .info p {
   text-align: center;
@@ -224,32 +216,41 @@ div.stars {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #DCE9BE; }
+  background-color: #CBDBE0; }
 
 .icon {
-  margin: 5px; }
+  margin: 10px; }
 
 #footer {
-  height: 80px;
   text-align: center;
-  background-color: #2E2633;
-  color: white; }
+  background-color: #3E4147;
+  color: white;
+  padding-bottom: 10px; }
+
+#footer p {
+  padding-top: 10px; }
 
 #details {
   text-align: center; }
 
 #basicInfo {
-  text-align: center; }
+  text-align: center;
+  color: #3E4147; }
 
 #attributes {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  color: #3E4147; }
 
 #commentField {
-  text-align: center; }
+  text-align: center;
+  background-color: #CBDBE0;
+  color: #3E4147; }
 
 #comments {
-  text-align: center; }
+  text-align: center;
+  background-color: #CBDBE0;
+  color: #3E4147; }
 
 .rating {
   unicode-bidi: bidi-override;

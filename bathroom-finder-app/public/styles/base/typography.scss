@@ -1,8 +1,8 @@
 html *{
   margin: 0;
   padding: 0;
+  font-family: 'Roboto Slab', serif;
 }
-
 html, body {
   height: 100%;
 }
@@ -42,8 +42,10 @@ div.stars {
   margin-right: 20px;
 }
 
-#title {
-  color: rgb(200,200,200);
+.menu #title {
+  color: white;
+  font-size: 42px;
+  padding-top: 10px;
 }
 
 .hidden {
@@ -56,7 +58,7 @@ div.stars {
 .menu-wrap {
     width:100%;
     box-shadow:0px 1px 3px rgba(0,0,0,0.2);
-    background: $eveningCloud;
+    background: $granite;
 }
 
 .menu {
@@ -65,7 +67,7 @@ div.stars {
     align-content: center;
     justify-content: space-around;
     height: 80px;
-    ul{
+    .link{
       padding-top: 30px;
     }
     li {
@@ -74,16 +76,14 @@ div.stars {
     }
     a {
       transition:all linear 0.15s;
-      color:#919191;
+      color: white;
       text-decoration: none;
     }
 }
 
 .menu li:hover > a, .menu .current-item > a {
     text-decoration:none;
-    border-radius: 20px 20px 20px 20px;
-
-    color:#00D09C;
+    color: $robinsEgg;
 }
 
 .menu > ul > li {
@@ -95,9 +95,9 @@ div.stars {
     text-shadow:0px 1px 0px rgba(0,0,0,0.4);
 }
 
-.menu > ul > li:hover > a, .menu > ul > .current-item > a {
-    background:grey;
-}
+// .menu > ul > li:hover > a, .menu > ul > .current-item > a {
+//
+// }
 
 #sub-menu {
     width:160%;
@@ -109,7 +109,7 @@ div.stars {
     opacity:0;
     transition:opacity linear 0.15s;
     box-shadow:0px 2px 3px rgba(0,0,0,0.2);
-    background:#2e2728;
+    background:$granite;
     li {
       font-size:16px;
     }
@@ -125,9 +125,6 @@ div.stars {
     opacity:1;
 }
 
-#sub-menu li a:hover, .sub-menu .current-item a {
-    background:#3e3436;
-}
 
 // --------------------------------
 
@@ -141,7 +138,6 @@ div.stars {
 
   z-index: 200;
   border: 10px solid black;
-  height: 50vh;
   width: 50vw;
   position: fixed;
   top: 50%;
@@ -168,7 +164,6 @@ div.stars {
 
   z-index: 200;
   border: 10px solid black;
-  height: 50vh;
   width: 50vw;
   position: fixed;
   top: 50%;
@@ -228,30 +223,25 @@ main {
   background-image: url(/images/AdobeStock_63967942.jpeg);
   background-size: 100vw 400px;
 }
-  #description {
-    width:80%;
-    height: 40%;
-    display: flex;
-    text-align: center;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.25) border-box;
-    overflow: hidden;
-    border-radius: .3em;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset, 0 0.5em 1em rgba(0, 0, 0, 0.6);
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
-  }
   #locate {
     width: 200px;
     height: 50px;
-    background-color: $heliotrope;
+    border-radius: 10px;
+    border: none;
+    margin-top: 250px;
+    background-color: $granite;
     color: white;
     margin-bottom: 20px;
+    font-size: 16px;
+  }
+  #locate:hover{
+    border: 2px solid white;
   }
 #teamInfo {
-  height: 400px;
   display: flex;
   justify-content: space-around;
   background-color: white;
+  padding-bottom: 20px;
 }
   #teamInfo h3{
     text-align: center;
@@ -259,7 +249,7 @@ main {
   .info {
     width: 30%;
     background-color: white;
-    color: $shadowDirt;
+    color: $granite;
   }
     .info img {
       margin-top: 20px;
@@ -269,7 +259,10 @@ main {
       display: flex;
       margin: auto;
       margin-top: 20px;
-      border: 5px solid $heliotrope;
+      border: 5px solid $granite;
+    }
+    .info h3 {
+      margin-top: 10px;
     }
     .info p {
       text-align: center;
@@ -280,33 +273,42 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $hex;
+  background-color: $robinsEgg;
 }
   .icon {
-    margin: 5px;
+    margin: 10px;
   }
 #footer {
-  height: 80px;
   text-align: center;
-  background-color: $eveningCloud;
+  background-color: $granite;
   color: white;
+  padding-bottom: 10px;
 }
+  #footer p{
+    padding-top: 10px;
+  }
   // More info viewpage
 #details{
   text-align: center;
 }
 #basicInfo {
   text-align: center;
+  color: $granite;
 }
 #attributes {
   display: flex;
   justify-content: space-around;
+  color: $granite;
 }
 #commentField {
   text-align: center;
+  background-color: $robinsEgg;
+  color: $granite;
 }
 #comments {
   text-align: center;
+  background-color: $robinsEgg;
+  color: $granite;
 }
 
 .rating {

@@ -24,7 +24,7 @@ function findBathrooms(oLat, oLng, x, resolve) {
   knex('bathrooms').whereBetween('lat', [oLatLo, oLatHi]).andWhereBetween('lng', [oLngLo, oLngHi]).then(function(bathrooms) {
 
     // IF NOT ENOUGH BATHROOMS, WIDEN RANGE, REPEAT UNTIL THERE ARE ENOUGH BATHROOMS
-    if (bathrooms.length < 3) {
+    if (bathrooms.length < 10) {
       findBathrooms(oLat, oLng, resolve, x + 0.1)
     } else {
 
