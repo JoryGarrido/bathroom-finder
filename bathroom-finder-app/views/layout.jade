@@ -44,7 +44,8 @@ html
         p not a user? 
           a#signupButton(href="#") Sign up
           
-      button login with facebook
+      button
+      a(href="/auth/facebook") Login with Facebook
         
   //- Sign up div
   div    
@@ -96,8 +97,6 @@ html
           input(type="checkbox")
             
         input(type="submit")
-      button Sign Up With Facebook      
-
   block content
   
   #footer
