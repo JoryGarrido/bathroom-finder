@@ -49,11 +49,11 @@ router.get('/main', function(req, res, next) {
 
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
 
-    // RUN SORT ALGORITHM
-    var idDistance = ajaxArray.sort(function(a, b) {
-      return a[1] - b[1];
-    })
-    
+    // // RUN SORT ALGORITHM
+    // var idDistance = ajaxArray.sort(function(a, b) {
+    //   return a[1] - b[1];
+    // })
+
     res.render('main', {
       lat: req.session.lat,
       lng: req.session.lng,
