@@ -48,6 +48,7 @@ function findBathrooms(oLat, oLng, x, resolve) {
       var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + oLat + ',' + oLng + '&destinations=' + queryLatLngs + '&mode=' + mode + '&language=en-EN&key=' + process.env.GOOGLEMAPS_API_KEY;
       request(url, function(error, response, body) {
         if (!error && response.statusCode == 200) {
+
           // DISTANCE IN METERS
           var result = JSON.parse(body);
           for (var i = 0; i < bathrooms.length; i++) {

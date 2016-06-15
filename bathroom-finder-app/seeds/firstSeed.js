@@ -31,5 +31,23 @@ exports.seed = function(knex, Promise) {
       users_id: 1,
       directions: 'Go though yellow deli, out the back, down hallway to the right'
     })
+    knex('bathrooms').insert({
+      id: 4,
+      bathroomname: 'Hallway behind Zoe Ma Ma',
+      rating: 3,
+      lat: 40.0168749,
+      lng: -105.2833636,
+      users_id: 1,
+      directions: 'Go though yellow deli, out the back, down hallway to the right'
+    })
+    knex('bathrooms').insert({
+      id: 5,
+      bathroomname: 'Hallway behind Yellow Deli',
+      rating: 2,
+      lat: 40.0168749,
+      lng: -105.2833636,
+      users_id: 1,
+      directions: 'Go though yellow deli, out the back, down hallway to the right'
+    })
   );
 };
