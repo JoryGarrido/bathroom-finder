@@ -40,11 +40,48 @@ document.addEventListener("DOMContentLoaded", function(event) {
     addBathroom.style.display = "flex";
   });
 
+  var bathroomListRatings = document.getElementsByClassName('starNumber');
+  function fuckyou() {
+   for (var i = 0; i < bathroomListRatings.length; i++) {
+     console.log('for');
+     if(bathroomListRatings[i].innerHTML === '1'){
+       console.log('if');
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][0].style.display = 'inline-block';
+     }
+     else if( bathroomListRatings[i].innerHTML === '2'){
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][1].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][0].style.display = 'inline-block';
+     }
+     else if(bathroomListRatings[i].innerHTML === '3'){
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][2].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][1].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][0].style.display = 'inline-block';
+     }
+     else if(bathroomListRatings[i].innerHTML === '4'){
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][3].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][2].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][1].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][0].style.display = 'inline-block';
+     }
+     else if(bathroomListRatings[i].innerHTML === '5'){
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][4].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][3].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][2].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][1].style.display = 'inline-block';
+       bathroomListRatings[i]['parentElement']['children'][0]['children'][0]['children'][0].style.display = 'inline-block';
+     }
+   }
+  }
+  fuckyou();
+  // console.log(bathroomListRatings[0]);
 // THIS DOESNT WORK
-  title.addEventListener('click', function(){
-    window.location = "localhost:3000";
-  });
+  // title.addEventListener('click', function(){
+  //   window.location = "localhost:3000";
+  // });
 // ----------------
+
+
+
 });
 
 window.fbAsyncInit = function() {
