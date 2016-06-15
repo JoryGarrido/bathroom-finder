@@ -12,7 +12,11 @@ block content
             span(class="star3") &#9734
             span(class="star4") &#9734
             span(class="star5") &#9734
-          p(class="listTitle")= bathroom.bathroomname 
+          p(class="listTitle")= bathroom.bathroomname
+            span  -- 
+            span= bathroom.distance 
+            span  meters
+            
           p= bathroom.directions
         div(class="halfList")
           if bathroom.menschangingtable == true

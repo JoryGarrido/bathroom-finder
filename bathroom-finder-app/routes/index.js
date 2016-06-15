@@ -29,7 +29,7 @@ router.post('/position', function(req, res, next) {
   var lat = req.body.lat.toString();
   var lng = req.body.lng.toString();
 
-  // SET LOCATION COOKIE
+  // SET CURRENT LOCATION COOKIE
   req.session.lat = lat;
   req.session.lng = lng;
 
@@ -38,7 +38,7 @@ router.post('/position', function(req, res, next) {
     findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
 
-  // RECEIVE ARRAY OF IDS OF CLOSEST BATHROOMS, ADD TO COOKIE
+  // RECEIVE ARRAY OF IDS/DISTANCES OF CLOSEST BATHROOMS, ADD TO COOKIE
   promise.then(function(bathroomIDs) {
     req.session.bathrooms = bathroomIDs;
     res.redirect('/main');
@@ -53,15 +53,14 @@ router.get('/main', function(req, res, next) {
   for (var i = 0; i < bathArr.length; i++) {
     IDs[i] = bathArr[i][0];
   }
-
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
 
-    // LOOP ORDER FROM bathArr, APPLY TO bathrooms
+    // ORDER BATHROOMS ARRAY BASED ON DISTANCES, ADD DISTANCES TO ARRAY
     for (var i = 0; i < bathArr.length; i++) {
       for (var j = 0; j < bathrooms.length; j++) {
         if (bathrooms[j].id === bathArr[i][0]) {
-          sendArray.push(bathrooms[j]);
           bathrooms[j].distance = bathArr[i][1];
+          sendArray.push(bathrooms[j]);
         }
       }
     }
@@ -74,6 +73,30 @@ router.get('/main', function(req, res, next) {
     });
   })
 })
+
+router.get('/bathrooms', function (req, res, next) {
+  var object;
+  var name = res.locals.user.username;
+  var bathArr = req.session.bathrooms;
+  var IDs = [];
+  var sendArray = [];
+  for (var i = 0; i < bathArr.length; i++) {
+    IDs[i] = bathArr[i][0];
+  }
+  knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
+
+    // ORDER BATHROOMS ARRAY BASED ON DISTANCES, ADD DISTANCES TO ARRAY
+    for (var i = 0; i < bathArr.length; i++) {
+      for (var j = 0; j < bathrooms.length; j++) {
+        if (bathrooms[j].id === bathArr[i][0]) {
+          sendArray.push(bathrooms[j]);
+          bathrooms[j].distance = bathArr[i][1];
+        }
+      }
+    }
+    res.json({ bathrooms: sendArray });
+  })
+});
 
 router.post('/signup', function(req, res, next) {
   var password = bcrypt.hashSync(req.body.password, 8);
