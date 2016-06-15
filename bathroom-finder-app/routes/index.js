@@ -58,7 +58,7 @@ router.get('/main', function(req, res, next) {
         }
       }
     }
-    console.log(sendArray);
+    
     res.render('main', {
       lat: req.session.lat,
       lng: req.session.lng,
