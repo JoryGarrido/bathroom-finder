@@ -17,11 +17,13 @@ html
             else
               a#login Login
             ul#sub-menu
-              li 
-                a(href='#') Edit Account
               li
-                form(action="/signout" method='POST') 
-                  input(type='submit' value='Signout')  
+                if username
+                  form(action="/signout" method='POST') 
+                    input(type='submit' value='Signout')
+                unless username == Guest
+                else
+                  form(action="/signout" method="POST")  
         ul
           li#title PottySpotter
         ul.link

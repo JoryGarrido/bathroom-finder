@@ -12,14 +12,24 @@ block content
             span(class="star3") &#9734
             span(class="star4") &#9734
             span(class="star5") &#9734
-              
-          p(class="listTitle")= bathroom.bathroomname
-            span  -- 
-            span= bathroom.distance 
-            span  meters
-            
+          a(class="listTitle" href='/moreinfo')= bathroom.bathroomname
+          span  -- 
+          span= bathroom.distance 
+          span  meters
           p= bathroom.directions
-        div(class="halfList")
+        div(class="attFlex")
+          div(class="attributes1")
+            if bathroom.menschangingtable == true
+              p Men's Changing Table
+            if bathroom.womanschangingtable == true
+              p Women's Changing table
+            if bathroom.unisex == true
+              p Unisex
+          div(class="attributes2")
+            if bathroom.customersonly == true
+              p Customers Only
+            if bathroom.private == true
+              p Private    
         div(class="starNumber")= bathroom.rating
 
   
