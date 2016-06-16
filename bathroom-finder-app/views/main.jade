@@ -7,7 +7,8 @@ block content
       div(class="listItem")
         div(class="halfList")
           div(class="stars")= bathroom.rating
-          p(class="listTitle")= bathroom.bathroomname 
+          a(href="/moreinfo/#{bathroom.id}")
+            p(class="listTitle")= bathroom.bathroomname 
           p= bathroom.directions
         div(class="halfList")
   

@@ -52,9 +52,9 @@ function findBathrooms(oLat, oLng, x, resolve) {
           // DISTANCE IN METERS
           var result = JSON.parse(body);
           for (var i = 0; i < bathrooms.length; i++) {
-            ajaxArray[i] = [];
-            ajaxArray[i][0] = bathrooms[i].id;
-            ajaxArray[i][1] = result.rows[0].elements[i].distance.value;
+            // ajaxArray[i] = [];
+            // ajaxArray[i][0] = bathrooms[i].id;
+            // ajaxArray[i][1] = result.rows[0].elements[i].distance.value;
           }
         }
 
