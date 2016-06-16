@@ -1,0 +1,88 @@
+extends layout
+block content
+
+
+  body
+    section#moreInfo
+      div#basicInfo
+        h1#bRoomName #{bathroomInfo.bathroomname}
+        h2#bRoomRating Average Rating: #{bathroomInfo.rating}/5
+        h3 Location: Address?
+        h3 Directions:
+        p #{bathroomInfo.directions}
+      h3#details 
+      div#attributes
+        div#left
+          if bathroomInfo.menschangingtable == true
+            p
+              strong Mens Changing Table:
+                strong.attributeExist Yes
+          if bathroomInfo.menschangingtable == false
+            p
+              strong Mens Changing Table:
+                strong.attributeNonExist No
+          if bathroomInfo.menschangingtable == null
+            p
+              strong Mens Changing Table:
+                strong.attributeNull N/A
+                ///////////
+          if bathroomInfo.customersonly == true
+            p
+              strong Customers Only:
+                strong.attributeExist Yes
+          if bathroomInfo.customersonly == false
+            p
+              strong Customers Only:
+                strong.attributeNonExist No
+          if bathroomInfo.customersonly == null
+            p
+              strong CustomersOnly:
+                strong.attributeNull N/A
+                ///////////
+          if bathroomInfo.unisex == true
+            p
+              strong Unisex:
+                strong.attributeExist Yes
+          if bathroomInfo.unisex == false
+            p
+              strong Unisex:
+                strong.attributeNonExist No
+          if bathroomInfo.unisex == null
+            p
+              strong Unisex:
+                strong.attributeNull N/A
+        div#right
+          if bathroomInfo.womenschangingtable == true
+            p
+              strong Women's Changing Table:
+                strong.attributeExist Yes
+          if bathroomInfo.womanschangingtable == false
+            p
+              strong Women's Changing Table:
+                strong.attributeNonExist No
+          if bathroomInfo.womanschangingtable == null
+            p
+              strong Women's Changing Table:
+                  strong.attributeNull N/A
+          if bathroomInfo.hours
+            p
+              strong Hours:
+                strong.attributeExist #{bathroomInfo.hours}
+          if bathroomInfo.hours == null
+            p
+              strong Hours:
+                strong.attributeNull N/A
+          if bathroomInfo.private == true
+            p
+              strong Multi or Single Stall:
+                strong.attributeExist Single
+          if bathroomInfo.private == false
+            p
+              strong Multi or Single Stall:
+                strong.attributeNonExist Multi
+          if bathroomInfo.private == null
+            p
+              strong Multi or Single Stall:
+                strong.attributeNull N/A
+      h3#commentField Comments
+      #comments push comments into this div

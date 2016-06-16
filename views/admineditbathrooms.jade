@@ -1,0 +1,24 @@
+extends layout
+block content
+
+  body
+    section#addBathroom
+      form(action='/admin/bathrooms/#{bathroom.id}/post' method='POST')
+         input(type="text" name="bathroomname" placeholder="Bathroom name")
+         input(type="text" name="directions" placeholder="Directions")
+         label(for="menschangingtable") Mens changing table
+           input(type="radio" name="menschangingtable" value="true")
+           input(type="radio" name="menschangingtable" value="false")
+         label(for="womenschangingtable") Womens changing table
+           input(type="radio" name="womenschangingtable" value="true")
+           input(type="radio" name="womenschangingtable" value="false")
+         label(for="unisex") Unisex
+           input(type="radio" name="unisex" value="true")
+           input(type="radio" name="unisex" value="false")
+         label(for="customersonly") Customers only
+           input(type="radio" name="customersonly" value="true")
+           input(type="radio" name="customersonly" value="false")
+         label(for="private") Private
+           input(type="radio" name="private" value="true")
+           input(type="radio" name="private" value="false")
+         input(type="submit")

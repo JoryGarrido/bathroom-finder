@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+  meta(name="viewport" content="initial-scale=1.0")
+  link(href='https://fonts.googleapis.com/css?family=Roboto+Slab', rel='stylesheet', type='text/css')
+  link(rel="stylesheet", href='/stylesheets/style.css')
+  script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
+  script(src="/javascript/nav.js")
+  script(src="/javascript/main.js")
+  header
+    div.menu-wrap
+      nav.menu
+        ul.link
+          li
+            if username
+              a#login= username
+            else
+              a#login Login
+            ul#sub-menu
+              li
+                if username
+                  form(action="/signout" method='POST') 
+                    input(type='submit' value='Signout')
+                unless username == Guest
+                else
+                  form(action="/signout" method="POST")  
+        ul
+          li#title
+            img(src='/images/logo.png')
+        ul.link
+          li
+            a#addBathroomButton Add Bathroom
+  block content        
+  
+  #footer
+    p
+      | PottySpotter
+      span ™
+      br
+      span#divide ✦
+      br
+      | Created By: Ian, Jory Blaze and KC

@@ -1,0 +1,31 @@
+extends layout
+block content
+
+  main
+    #banner
+      form(action="/main" method="GET")
+
+        button#locate Find Bathrooms
+    #teamInfo
+      #ian.info
+        img(src='/images/1465939602_tmp_map_picture.jpg')
+        h3 Close
+        p Out and about? On the road? Find a nice, clean bathroom in your area or on your route.
+      #jory.info
+        img(src='/images/kid has to pee.jpeg')
+        h3 Convenient
+        p If you have small children or require specific accomodations, view Bathroom Details to be sure all of your criteria are being met.
+      #kc.info
+        img(src='/images/phone image.jpg')
+        h3 Connect
+        p Join the community. Sign up to leave a comment or add a bathroom. Our database is completely crowdsourced. Our sites accuracy relies on you! 
+    #socIcons
+      a(href='https://www.facebook.com/').icon
+        img(src='/images/1465975095_FB.png')
+      a(href='https://twitter.com/').icon
+        img(src='/images/1465975181_TWITTER.png')
+      a(href='https://www.google.com/').icon
+        img(src='/images/1465975075_google.png')
+    
+    a(href="/admin") Admin test
+    

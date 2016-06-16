@@ -1,0 +1,102 @@
+
+DONE 2. Pins - IS
+DONE 8. Add logo - KC
+DONE 10. Fix signout button - JBG
+DONE 11. Remove the Edit Account button
+DONE  Add attributes of bathroom to bathroom list - JBG
+DONE Add the button to the list of bathrooms to view the bathroom details - JBG
+DONE Fix Add a Bathroom form - KB
+DONE Add a bathroom View - KB
+DONE Add Admin View and allow it to delete things from the database - IS
+
+STYLING Style Sign in/Sign up
+STYLING Style the bathroom details page
+
+BUG When signed in, do not allow the named button to sign you in again
+BUG Fix lat long accuracy
+BUG Signing in and signing out from the signup/sign in err view
+BUG review entry for add bathroom
+
+FEATURE oAuth
+FEATURE Fix add bathroom page
+FEATURE pull data from db into view more page
+FEATURE form for creating a review
+
+FEATURE Form Validate
+
+
+ONCE IN PRODUCTION:
+-change range to require 10 bathrooms
+-
+
+
+
+
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('reviews', function(table) {
+    table.increments('id').primary();
+    table.integer('rating').notNullable();
+    table.string('review');
+    table.integer('users_id').references('id').inTable('users');
+    table.integer('bathrooms_id').references('id').inTable('bathrooms');
+  });
+};
+
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable('reviews');
+};
+
+
+//- h4 Bathroom Name
+//- label(for='name')
+//-   input#bathroomname(type='text' name='bathroomname')
+//- br
+//- h4 Rating
+//- div
+//-   span  &#9734
+//-   span  &#9734
+//-   span  &#9734
+//-   span  &#9734
+//-   span  &#9734
+//- h4 Review
+//- label(for='review')
+//-   textarea#review(name='review', value='review', Placeholder='write a review')
+//- h4 Is this bathroom private or multistall?
+//- label(for='private')
+//-   | Private
+//-   input(type='radio', name='private', value='true')
+//- label(for='private')
+//-   | Multi
+//-   input(type='radio', name='private', value='false')
+//- h4 Is there a changing table in the Mens Room?
+//- label(for='menschangingtable')
+//-   | Yes
+//-   input(type='radio', name='menschangingtable', value='true')
+//- label(for='menschangingtable')
+//-   | No
+//-   input(type='radio', name='menschangingtable', value='false')
+//- h4 Is there a changing table in the Womens Room?
+//- label(for='womenschangingtable')
+//-   | Yes
+//-   input(type='radio', name='womenschangingtable', value='true')
+//- label(for='womenschangingtable')
+//-   | No
+//-   input(type='radio', name='womenschangingtable', value='false')
+//- h4 Is it a unisex bathroom?
+//- label(for='unisex')
+//-   | Yes
+//-   input(type='radio', name='unisex', value='true')
+//- label(for='unisex')
+//-   | No
+//-   input(type='radio', name='unisex', value='false')
+//- h4 Is is a customers only bathroom?
+//- label(for='customersonly')
+//-   | Yes
+//-   input(type='radio', name='customersonly', value='true')
+//- label(for='customersonly')
+//-   | No
+//-   input(type='radio', name='customersonly', value='false')
+//- h4 What are the hours of this establishment?
+//- input#hours(type='text', name='hours')
+//- br
+//- input(type='submit')

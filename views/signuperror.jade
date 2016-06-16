@@ -1,0 +1,16 @@
+extends layout
+block content
+  div#signInSignUpPage
+    div#signInHalf
+      h2 Sign in
+        form(action='/signin' method='POST')
+          input(type="text" name="username" placeholder="username")
+          input(type="password" name="password" placeholder="password")
+          input(type="submit" value="Sign in")
+    div#signUpHalfErr  
+      h2 Sign Up
+      p Username is already taken, please try again
+        form(action='/signup' method='POST')
+          input(type="text" name="username" placeholder="username")
+          input(type="password" name="password1" placeholder="password")
+          input(type="submit" value="Sign in")
