@@ -6,5 +6,9 @@ module.exports = {
     client: 'postgres',
     connection: 'postgres://localhost:5432/bathrooms'
   },
+  production: {
+    client: 'postgres',
+    connection: 'https://pottyspotter.herokuapp.com/bathrooms'
+  },
   useNullAsDefault: true,
 };
