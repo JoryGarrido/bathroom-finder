@@ -39,3 +39,58 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('reviews');
 };
+
+
+//- h4 Bathroom Name
+//- label(for='name')
+//-   input#bathroomname(type='text' name='bathroomname')
+//- br
+//- h4 Rating
+//- div
+//-   span  &#9734
+//-   span  &#9734
+//-   span  &#9734
+//-   span  &#9734
+//-   span  &#9734
+//- h4 Review
+//- label(for='review')
+//-   textarea#review(name='review', value='review', Placeholder='write a review')
+//- h4 Is this bathroom private or multistall?
+//- label(for='private')
+//-   | Private
+//-   input(type='radio', name='private', value='true')
+//- label(for='private')
+//-   | Multi
+//-   input(type='radio', name='private', value='false')
+//- h4 Is there a changing table in the Mens Room?
+//- label(for='menschangingtable')
+//-   | Yes
+//-   input(type='radio', name='menschangingtable', value='true')
+//- label(for='menschangingtable')
+//-   | No
+//-   input(type='radio', name='menschangingtable', value='false')
+//- h4 Is there a changing table in the Womens Room?
+//- label(for='womenschangingtable')
+//-   | Yes
+//-   input(type='radio', name='womenschangingtable', value='true')
+//- label(for='womenschangingtable')
+//-   | No
+//-   input(type='radio', name='womenschangingtable', value='false')
+//- h4 Is it a unisex bathroom?
+//- label(for='unisex')
+//-   | Yes
+//-   input(type='radio', name='unisex', value='true')
+//- label(for='unisex')
+//-   | No
+//-   input(type='radio', name='unisex', value='false')
+//- h4 Is is a customers only bathroom?
+//- label(for='customersonly')
+//-   | Yes
+//-   input(type='radio', name='customersonly', value='true')
+//- label(for='customersonly')
+//-   | No
+//-   input(type='radio', name='customersonly', value='false')
+//- h4 What are the hours of this establishment?
+//- input#hours(type='text', name='hours')
+//- br
+//- input(type='submit')
