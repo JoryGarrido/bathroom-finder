@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.integer('rating').notNullable();
     table.float('lat').notNullable();
     table.float('lng').notNullable();
+    // table.float('lat', 24).notNullable();
+    // table.float('lng', 24).notNullable();
     table.integer('users_id').references('id').inTable('users');
     table.string('directions');
     table.boolean('menschangingtable');
