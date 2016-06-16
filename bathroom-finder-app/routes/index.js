@@ -170,6 +170,7 @@ router.get('/addbathroom', function(req, res, next){
 })
 
 
+
 router.post('/addbathroom', function(req, res, next){
   console.log(req.body);
 
