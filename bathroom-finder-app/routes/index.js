@@ -170,6 +170,28 @@ router.get('/addbathroom', function(req, res, next){
 })
 
 
+<<<<<<< HEAD
+router.post('/addbathroom', function(req, res, next){
+  console.log(req.body);
+
+  knex('bathrooms')
+  .insert({
+    bathroomname: req.body.bathroomname,
+    rating: 4,
+    lat: 4.3,
+    lng: 4.2,
+    users_id: 1,
+    directions: req.body.directions,
+    menschangingtable: req.body.menschangingtable,
+    womanschangingtable: req.body.womenschangingtable,
+    unisex: req.body.unisex,
+    customersonly: req.body.customersonly,
+    private: req.body.private
+  }).then(function(){
+    res.redirect('/main');
+  })
+})
+=======
 // router.post('/addbathroom', function(req, res, next){
 //   console.log(req.body);
 //
@@ -241,6 +263,7 @@ router.get('/addbathroom', function(req, res, next){
 // })
 
 
+>>>>>>> 8789f7b0ae4200d4166303e980e05ca2343d5901
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER/ADMIN
 // function verifyUser(req, res, next) {
