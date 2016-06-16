@@ -2,10 +2,12 @@
   return knex.schema.createTable('users', function(table) {
     table.increments('id').primary();
     table.string('username').unique().notNullable();
-    // table.string('facebookId').unique;
-    // table.string('accesstoken');
+    table.string('fb_id').unique;
+    table.string('fb_displayname');
+    table.string('fb_accesstoken');
     table.string('password').notNullable();
     table.boolean('isadmin').notNullable().defaultTo(false);
+    table.boolean('isactive').notNullable().defaultlTo(true);
   });
 };
 

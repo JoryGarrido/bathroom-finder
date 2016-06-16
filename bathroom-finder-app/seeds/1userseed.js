@@ -5,7 +5,6 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('bathrooms').insert({
-      id: 1,
       bathroomname: 'Galvanize 2nd floor',
       rating: 5,
       lat: 40.017835399999996,
@@ -14,7 +13,6 @@ exports.seed = function(knex, Promise) {
       directions: 'down the hall to the right'
     }),
     knex('bathrooms').insert({
-      id: 2,
       bathroomname: 'Pearl st walking mall',
       rating: 1,
       lat: 40.0182635,
@@ -23,7 +21,6 @@ exports.seed = function(knex, Promise) {
       directions: 'corner of pearl and 13th'
     }),
     knex('bathrooms').insert({
-      id: 3,
       bathroomname: 'Hallway behind Yellow Deli',
       rating: 5,
       lat: 40.0168749,
@@ -32,7 +29,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Go though yellow deli, out the back, down hallway to the right'
     }),
     knex('bathrooms').insert({
-      id: 4,
       bathroomname: 'Hallway behind Zoe Ma Ma',
       rating: 3,
       lat: 40.01774439,
@@ -41,7 +37,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Go into Zoe Ma Ma, past restaurant and down the hall to the left'
     }),
     knex('bathrooms').insert({
-      id: 5,
       bathroomname: 'Pearl Street Pub',
       rating: 2,
       lat: 40.01727193,
@@ -50,7 +45,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Just past back entrance to Pearl Street Pub'
     }),
     knex('bathrooms').insert({
-      id: 6,
       bathroomname: 'Hallway behind Chipotle/World of Beer',
       rating: 2,
       lat: 40.0174907,
@@ -59,7 +53,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Go though either Chipotle or WoB, no one cares'
     }),
     knex('bathrooms').insert({
-      id: 7,
       bathroomname: '29th Street Mall',
       rating: 2,
       lat: 40.01869805,
@@ -68,7 +61,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Take staircase between Teavana and Eddie Bauer, turn right at the balcony and go all the way around'
     }),
     knex('bathrooms').insert({
-      id: 8,
       bathroomname: 'McDonald\'s',
       rating: 2,
       lat: 40.01930915,
@@ -77,7 +69,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Go inside, no one cares'
     }),
     knex('bathrooms').insert({
-      id: 9,
       bathroomname: 'Target',
       rating: 2,
       lat: 40.02206674,
@@ -86,7 +77,6 @@ exports.seed = function(knex, Promise) {
       directions: 'Just inside on the left, no one cares'
     }),
     knex('bathrooms').insert({
-      id: 10,
       bathroomname: 'Hallway behind Chipotle/World of Beer',
       rating: 2,
       lat: 39.99876598,

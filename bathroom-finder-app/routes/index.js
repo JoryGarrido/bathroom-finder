@@ -33,7 +33,7 @@ router.post('/position', function(req, res, next) {
   req.session.lng = lng;
   // INVOKE FIND BATHROOMS ALGORITHM
   var promise = new Promise(function(resolve, reject) {
-    findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
+    // findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
   // RECEIVE ARRAY OF IDS/DISTANCES OF CLOSEST BATHROOMS, ADD TO COOKIE
   promise.then(function(bathroomIDs) {
@@ -91,7 +91,6 @@ router.get('/bathrooms', function (req, res, next) {
         }
       }
     }
-    console.log(name);
     res.json({ bathrooms: sendArray, name: name, lat: lat, lng: lng});
   })
 });
@@ -165,9 +164,6 @@ router.get('/addbathroom', function(req, res, next){
   res.render('addbathroom');
 })
 
-router.get('/admin', verifyAdmin, function(req, res, next) {
-  res.render('admin', {title: "Admin page"});
-})
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER/ADMIN
 // function verifyUser(req, res, next) {
@@ -177,16 +173,6 @@ router.get('/admin', verifyAdmin, function(req, res, next) {
 //   next();
 // }
 
-function verifyAdmin(req, res, next) {
-  if (!req.session.id) {
-  // if (res.locals.user.isAdmin === true) {
-    res.redirect('/');
-  }
-  knex('bathrooms').then(function(bathrooms) {
-    res.render('admin', {bathrooms: bathrooms})
-  })
-  // next();
-}
 
 
 router.get('/auth/facebook', passport.authenticate('facebook'));

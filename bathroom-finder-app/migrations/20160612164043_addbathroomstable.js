@@ -4,14 +4,13 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('bathroomname').notNullable();
     table.integer('rating').notNullable();
-    table.float('lat').notNullable();
-    table.float('lng').notNullable();
-    // table.float('lat', 24).notNullable();
-    // table.float('lng', 24).notNullable();
+    table.float('lat', 24).notNullable();
+    table.float('lng', 24).notNullable();
     table.integer('users_id').references('id').inTable('users');
     table.string('directions');
+    table.string('hours');
     table.boolean('menschangingtable');
-    table.boolean('womanschangingtable');
+    table.boolean('womenschangingtable');
     table.boolean('unisex');
     table.boolean('customersonly');
     table.boolean('private');
