@@ -8,7 +8,7 @@ module.exports = {
   },
   production: {
     client: 'postgres',
-    connection: 'https://pottyspotter.herokuapp.com/bathrooms'
+    connection: 'https://pottyspotter.herokuapp.com:5432/bathrooms'
   },
   useNullAsDefault: true,
 };

@@ -15,7 +15,9 @@ $(function() {
       console.log("geo fired");
       $.ajax({
         type: "POST",
-        url: 'https://pottyspotter.herokuapp.com/position',
+        // WHEN PUSHING TO HEROKU USE TOP URL:
+        // url: 'https://pottyspotter.herokuapp.com/position',
+        url: 'http://localhost:3000/position',
         data: position
       });
     }

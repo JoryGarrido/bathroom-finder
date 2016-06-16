@@ -112,7 +112,7 @@ router.post('/bathrooms/:id/post', function(req, res, next) {
   });
 });
 
-router.get('/reviews/:id/edit', function(req, res, next) {
+router.get('/reviews/:id/edit', verifyAdmin, function(req, res, next) {
   knex('reviews').where('id', req.params.id).first().then(function(bathroom) {
     res.render('admineditreviews', {
       bathroom: bathroom
@@ -120,15 +120,14 @@ router.get('/reviews/:id/edit', function(req, res, next) {
   })
 });
 
-router.post('/reviews/:id/edit', function(req, res, next) {
+router.post('/reviews/:id/edit', verifyAdmin, function(req, res, next) {
   knex('reviews').where('id', req.params.id).update(req.body).then(function() {
     res.redirect('/admin/reviews');
   });
 });
 
 function verifyAdmin(req, res, next) {
-  // if (!req.session.id) {
-  if (res.locals.user.isadmin === false) {
+  if (!req.session.id || res.locals.user.isadmin === false) {
     res.redirect('/');
   }
   next();
