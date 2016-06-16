@@ -46,14 +46,17 @@ router.post('/position', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
   var name = res.locals.user.username;
-  var bathArr = req.session.bathrooms;
+  var bathArr = req.session.bathrooms || [];
   var IDs = [];
   var sendArray = [];
   for (var i = 0; i < bathArr.length; i++) {
     IDs[i] = bathArr[i][0];
   }
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
+    console.log(bathrooms);
     // ORDER BATHROOMS ARRAY BASED ON DISTANCES, ADD DISTANCES TO ARRAY
+    console.log(bathArr.length);
+    console.log(bathrooms.length);
     for (var i = 0; i < bathArr.length; i++) {
       for (var j = 0; j < bathrooms.length; j++) {
         if (bathrooms[j].id === bathArr[i][0]) {
@@ -75,7 +78,7 @@ router.get('/main', function(req, res, next) {
 router.get('/bathrooms', function (req, res, next) {
   var object;
   var name = res.locals.user.username;
-  var bathArr = req.session.bathrooms;
+  var bathArr = req.session.bathrooms || [];
   var lat = req.session.lat;
   var lng = req.session.lng;
   var IDs = [];
