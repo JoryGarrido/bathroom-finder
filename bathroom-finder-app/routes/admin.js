@@ -101,10 +101,6 @@ router.post('/bathrooms/:id/post', function(req, res, next) {
 
   knex('bathrooms').where('id', req.params.id).update({
     bathroomname: req.body.bathroomname,
-  //   rating: 4,
-  //   lat: req.session.lat,
-  //   lng: req.session.lng,
-  //   users_id: req.session.id,
     directions: req.body.directions,
     menschangingtable: menschangingtable,
     womenschangingtable: womenschangingtable,
