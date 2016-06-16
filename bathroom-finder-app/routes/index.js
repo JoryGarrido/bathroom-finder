@@ -160,9 +160,83 @@ router.post('/signout', function (req, res, next) {
 router.get('/moreinfo', function(req, res, next){
   res.render('moreinfo');
 })
+
+
 router.get('/addbathroom', function(req, res, next){
   res.render('addbathroom');
 })
+
+
+// router.post('/addbathroom', function(req, res, next){
+//   console.log(req.body);
+//
+//   if(req.body.mensChangingTable === "false"){
+//     req.body.mensChangingTable = false
+//   }
+//   if(req.body.womensChangingTable === "false"){
+//     req.body.womensChangingTable = false
+//   }
+//   if(req.body.unisex === "false"){
+//     req.body.unisex = false
+//   }
+//   if(req.body.customersOnly === "false"){
+//     req.body.customersOnly = false
+//   }
+//   if(req.body.private === "false"){
+//     req.body.private = false
+//   }
+//
+//   knex('bathrooms')
+//   .insert({
+//     bathroomname: req.body.bathroomName,
+//     rating: 4,
+//     lat: 4.3,
+//     lng: 4.2,
+//     users_id: 1,
+//     directions: req.body.directions,
+//     menschangingtable: req.body.mensChangingTable,
+//     womanschangingtable: req.body.womensChangingTable,
+//     unisex: req.body.unisex,
+//     customersonly: req.body.customersOnly,
+//     private: req.body.private
+//   }).then(function(){
+//     res.redirect('/');
+//   })
+// })
+  // if(req.body.menschangingtable == "true"){
+  //   req.body.menschangingtable = true;
+  // }
+  // else if(req.body.menschangingtable == "false"){
+  //   req.body.menschangingtable= false;
+  // }
+  // else{
+  //   req.body.menschangingtable = null;
+  // }
+  // console.log(req.body);
+  // console.log(typeof(req.body.menschangingtable));
+  // console.log(req.session.lat);
+  // console.log(typeof(req.session.lng));
+  // knex('bathrooms')
+  // .insert({
+  //   bathroomname: req.body.bathroomname.toLowerCase(),
+  //   rating: 5,
+  //   lat: parseFloat(req.session.lat),
+  //   lng: parseFloat(req.session.lng),
+  //   user_id: 1,
+  //   directions: req.body.directions.toLowerCase(),
+  //   menschangingtable: req.body.menschangingtable
+  //   // womanschangingtable: req.body.womenschangingtable,
+  //   // unisex: req.body.unisex,
+  //   // customersonly: req.body.customersonly,
+  //   // private: req.body.private
+  // }).then(function(){
+  //
+  //   res.redirect('/main');
+  // }).catch(function(e) {
+  //   console.log(e);
+  // })
+// })
+
 
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER/ADMIN

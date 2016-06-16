@@ -38,7 +38,8 @@ div.stars {
 .menu #title img {
   width: 300px;
   height: 70px;
-  padding-top: 5px; }
+  padding-top: 5px;
+  padding-left: 30px; }
 
 .hidden {
   display: none; }
@@ -121,49 +122,6 @@ div.stars {
   transform: translate(-50%, -50%);
   box-shadow: 10px 10px rgba(0, 0, 0, 0.2); }
   #signin .xButton, #signup .xButton {
-    align-self: flex-end;
-    margin-right: 20px; }
-
-#AddABathroom {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
-  text-align: center;
-  z-index: 200;
-  border: 10px solid black;
-  width: 50vw;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.2); }
-  #AddABathroom form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 500px;
-    width: 30%; }
-  #AddABathroom #checkboxes {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; }
-  #AddABathroom .rating {
-    unicode-bidi: bidi-override;
-    direction: rtl; }
-    #AddABathroom .rating span {
-      display: inline-block;
-      position: relative;
-      width: 1.1em; }
-  #AddABathroom .rating > span:hover:before,
-  #AddABathroom .rating > span:hover ~ span:before {
-    content: "\2605";
-    position: absolute;
-    color: gold; }
-  #AddABathroom .xButton {
     align-self: flex-end;
     margin-right: 20px; }
 

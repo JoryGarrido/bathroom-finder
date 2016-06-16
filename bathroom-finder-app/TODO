@@ -18,6 +18,24 @@ BUG Signing in and signing out from the signup/sign in err view
 FEATURE oAuth
 FEATURE Add Admin View and allow it to delete things from the database - IS
 FEATURE Allow users to edit their reviews for UPDATE
+Fix add bathroom page
 
 
 FEATURE Form Validate
+
+
+
+
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('reviews', function(table) {
+    table.increments('id').primary();
+    table.integer('rating').notNullable();
+    table.string('review');
+    table.integer('users_id').references('id').inTable('users');
+    table.integer('bathrooms_id').references('id').inTable('bathrooms');
+  });
+};
+
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable('reviews');
+};
