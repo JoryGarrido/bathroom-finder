@@ -33,7 +33,7 @@ router.post('/position', function(req, res, next) {
   req.session.lng = lng;
   // INVOKE FIND BATHROOMS ALGORITHM
   var promise = new Promise(function(resolve, reject) {
-    findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
+    // findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
   // RECEIVE ARRAY OF IDS/DISTANCES OF CLOSEST BATHROOMS, ADD TO COOKIE
   promise.then(function(bathroomIDs) {
@@ -185,14 +185,29 @@ router.post('/addbathroom', function(req, res, next){
   if(req.body.private === "false"){
     req.body.private = false
   }
+  if(req.body.mensChangingTable === "true"){
+    req.body.mensChangingTable = true
+  }
+  if(req.body.womensChangingTable === "true"){
+    req.body.womensChangingTable = true
+  }
+  if(req.body.unisex === "true"){
+    req.body.unisex = true
+  }
+  if(req.body.customersOnly === "true"){
+    req.body.customersOnly = true
+  }
+  if(req.body.private === "true"){
+    req.body.private = true
+  }
 
   knex('bathrooms')
   .insert({
     bathroomname: req.body.bathroomName,
     rating: 4,
-    lat: 4.3,
-    lng: 4.2,
-    users_id: 1,
+    lat: req.session.lat,
+    lng: req.session.lng,
+    users_id: req.session.id,
     directions: req.body.directions,
     menschangingtable: req.body.mensChangingTable,
     womanschangingtable: req.body.womensChangingTable,
@@ -203,39 +218,6 @@ router.post('/addbathroom', function(req, res, next){
     res.redirect('/');
   })
 })
-  // if(req.body.menschangingtable == "true"){
-  //   req.body.menschangingtable = true;
-  // }
-  // else if(req.body.menschangingtable == "false"){
-  //   req.body.menschangingtable= false;
-  // }
-  // else{
-  //   req.body.menschangingtable = null;
-  // }
-  // console.log(req.body);
-  // console.log(typeof(req.body.menschangingtable));
-  // console.log(req.session.lat);
-  // console.log(typeof(req.session.lng));
-  // knex('bathrooms')
-  // .insert({
-  //   bathroomname: req.body.bathroomname.toLowerCase(),
-  //   rating: 5,
-  //   lat: parseFloat(req.session.lat),
-  //   lng: parseFloat(req.session.lng),
-  //   user_id: 1,
-  //   directions: req.body.directions.toLowerCase(),
-  //   menschangingtable: req.body.menschangingtable
-  //   // womanschangingtable: req.body.womenschangingtable,
-  //   // unisex: req.body.unisex,
-  //   // customersonly: req.body.customersonly,
-  //   // private: req.body.private
-  // }).then(function(){
-  //
-  //   res.redirect('/main');
-  // }).catch(function(e) {
-  //   console.log(e);
-  // })
-// })
 
 
 router.get('/admin', verifyAdmin, function(req, res, next) {
@@ -260,6 +242,15 @@ function verifyAdmin(req, res, next) {
   })
   // next();
 }
+
+router.get('/moreinfo/:id', function(req, res, next){
+  knex('bathrooms').where('id', req.params.id).then(function(bathrooms) {
+    console.log(bathrooms);
+    res.render('moreinfo', {
+      bathroomInfo: bathrooms[0]
+    });
+  })
+});
 
 
 router.get('/auth/facebook', passport.authenticate('facebook'));

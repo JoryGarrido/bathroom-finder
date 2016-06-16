@@ -7,6 +7,7 @@ DONE  Add attributes of bathroom to bathroom list - JBG
 DONE Add the button to the list of bathrooms to view the bathroom details - JBG
 DONE Fix Add a Bathroom form - KB
 DONE Add a bathroom View - KB
+DONE Add Admin View and allow it to delete things from the database - IS
 
 STYLING Style Sign in/Sign up
 STYLING Style the bathroom details page
@@ -14,11 +15,14 @@ STYLING Style the bathroom details page
 BUG When signed in, do not allow the named button to sign you in again
 BUG Fix lat long accuracy
 BUG Signing in and signing out from the signup/sign in err view
+BUG review entry for add bathroom
 
 FEATURE oAuth
-FEATURE Add Admin View and allow it to delete things from the database - IS
-FEATURE Allow users to edit their reviews for UPDATE
-Fix add bathroom page
+FEATURE Fix add bathroom page
+FEATURE pull data from db into view more page
+FEATURE form for creating a review
+
+
 
 
 FEATURE Form Validate

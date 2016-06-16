@@ -18,19 +18,33 @@ block content
           span= bathroom.distance 
           span  meters
           p= bathroom.directions
+          
         div(class="attFlex")
+          h4 ATTRIBUTES
           div(class="attributes1")
             if bathroom.menschangingtable == true
-              p Men's Changing Table
+              p.attributeExist Men's Changing Table
+            if bathroom.menschangingtable == false
+              p.attributeNonExist
+            if bathroom.menschangingtable == null
+              p.attributeNull
             if bathroom.womanschangingtable == true
-              p Women's Changing table
+              p.attributeExist Women's Changing table            
+            if bathroom.womenschangingtable == false
+              p.attributeNonExist
             if bathroom.unisex == true
-              p Unisex
-          div(class="attributes2")
+              p.attributeExist Unisex
+            if bathroom.unisex == false
+              p.attributeNonExist
             if bathroom.customersonly == true
-              p Customers Only
+              p.attributeExist Customers Only
+            if bathroom.customersonly == false
+              p.attributeNonExist
             if bathroom.private == true
-              p Private    
+              p.attributeExist Private
+            if bathroom.private == false
+              p.attributeNonExist
+        a(href='moreinfo/#{bathroom.id}') Details
         div(class="starNumber")= bathroom.rating
 
 
