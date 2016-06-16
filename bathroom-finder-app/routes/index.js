@@ -10,11 +10,18 @@ var findBathrooms = require('../findBathrooms')
 router.get('/', function(req, res, next) {
   var lat;
   var lng;
+  var name = res.locals.user.username;
   if (req.session.lat) {
     lat = req.session.lat
     lng = req.session.lng
   }
-  res.render('index', {user: res.locals.user, lat: lat, lng: lng });
+  res.render('index',
+    {
+      user: res.locals.user,
+      lat: lat,
+      lng: lng,
+      username: name
+     });
 });
 
 // RECEIVE LAT/LNG FROM CLIENT
@@ -108,7 +115,7 @@ router.post('/signup', function(req, res, next) {
         })
         .then(function(id) {
           req.session.id = id;
-          res.redirect('/');
+          res.redirect('/main');
         })
         .catch(function(err) {
           next(err);
@@ -118,6 +125,14 @@ router.post('/signup', function(req, res, next) {
       next(err);
     });
 })
+
+router.post('/signuperror', function(req, res, next){
+  res.render('/main');
+});
+
+router.get('/signin', function(req,res,next){
+  res.render('signin');
+});
 
 router.post('/signin', function(req, res, next) {
   knex('users')
@@ -171,6 +186,9 @@ function verifyAdmin(req, res, next) {
 
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/connect/facebook', passport.authorize('facebook', { scope : ['email'] }));
+
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main', failureRedirect: '/users' }));
 

@@ -73,6 +73,16 @@ div.stars {
     li {
       margin:0px;
       list-style:none;
+      input[type=submit] {
+        padding:5px 15px;
+        background:#ccc;
+        border:0 none;
+        cursor:pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        left-margin: 10px;
+        width: 100%;
+      }
     }
     a {
       transition:all linear 0.15s;
@@ -324,4 +334,24 @@ main {
 
 .starNumber {
   display: none;
+}
+.attFlex {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around;
+}
+
+#signInSignUpPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#signUpHalfErr{
+  border: 5px solid red;
+  h2, p {
+    color: red;
+  }
 }
