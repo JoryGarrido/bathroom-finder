@@ -5,9 +5,9 @@ function initMap() {
       type: "GET",
       dataType: 'json',
       // WHEN PUSHING TO HEROKU USE THIS:
-      url: 'https://pottyspotter.herokuapp.com/bathrooms'
+      // url: 'https://pottyspotter.herokuapp.com/bathrooms'
       // ELSE USE THIS:
-      // url: 'http://localhost:3000/bathrooms'
+      url: 'http://localhost:3000/bathrooms'
     })
 
     queryRequest.done(function(data) {

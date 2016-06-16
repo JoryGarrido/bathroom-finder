@@ -16,9 +16,9 @@ $(function() {
       $.ajax({
         type: "POST",
         // WHEN PUSHING TO HEROKU USE THIS:
-        url: 'https://pottyspotter.herokuapp.com/position',
+        // url: 'https://pottyspotter.herokuapp.com/position',
         // ELSE USE THIS:
-        // url: 'http://localhost:3000/position',
+        url: 'http://localhost:3000/position',
         data: position
       });
     }

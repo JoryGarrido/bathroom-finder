@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
       rating: 4,
       review: "this is the best bathroom evaaaaaar!!!",
       users_id: 1,
-      bathrooms_id: 1
+      bathrooms_id: 10
     })
   );
 };

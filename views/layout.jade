@@ -15,7 +15,7 @@ html
             if username
               a#login= username
             else
-              a#login Login
+              a#login= Login
             ul#sub-menu
               li
                 if username
@@ -26,7 +26,8 @@ html
                   form(action="/signout" method="POST")  
         ul
           li#title
-            img(src='/images/logo.png')
+            a(href="/")
+              img(src='/images/logo.png')
         ul.link
           li
             a#addBathroomButton Add Bathroom
