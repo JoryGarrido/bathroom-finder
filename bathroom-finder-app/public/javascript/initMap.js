@@ -9,7 +9,6 @@ function initMap() {
 
     queryRequest.done(function(data) {
       var bathrooms = data.bathrooms;
-      console.log(data);
       drawMap(data);
     })
   })

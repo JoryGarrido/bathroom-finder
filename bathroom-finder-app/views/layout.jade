@@ -7,6 +7,12 @@ html
   script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
   script(src="/javascript/nav.js")
   script(src="/javascript/main.js")
+  script(src='/javascript/FBSDK.js')
+  meta(property="og:url" content="http://www.your-domain.com/your-page.html")
+  meta(property="og:type" content="website")
+  meta(property="og:title" content="Potty Spotter" )
+  meta(property="og:description" content="Find out where to poop!")
+  //- meta(property="og:image" content="http://www.your-domain.com/path/image.jpg")
   header
     div.menu-wrap
       nav.menu
@@ -21,6 +27,7 @@ html
                 if username
                   form(action="/signout" method='POST') 
                     input(type='submit' value='Signout')
+                  div(class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true")
                 unless username == Guest
                 else
                   form(action="/signout" method="POST")  
@@ -30,7 +37,9 @@ html
         ul.link
           li
             a#addBathroomButton Add Bathroom
-  block content        
+  body
+
+    block content        
   
   #footer
     p

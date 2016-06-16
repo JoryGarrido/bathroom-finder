@@ -21,8 +21,9 @@ function findBathrooms(oLat, oLng, x, resolve) {
   // SET COORDINATE RANGE TO SEARCH
   knex('bathrooms').whereBetween('lat', [oLatLo, oLatHi]).andWhereBetween('lng', [oLngLo, oLngHi]).then(function(bathrooms) {
 
+
     // IF NOT ENOUGH BATHROOMS, WIDEN RANGE, REPEAT UNTIL THERE ARE ENOUGH BATHROOMS
-    if (bathrooms.length < 5) {
+    if (bathrooms.length < 3) {
       findBathrooms(oLat, oLng, x + 0.1, resolve)
     } else {
 
@@ -58,7 +59,6 @@ function findBathrooms(oLat, oLng, x, resolve) {
               ajaxArray[i][1] = 0;
             }
           }
-          console.log(ajaxArray);
 
           // RUN SORTING ALGORITHM
           var idDistance = ajaxArray.sort(function(a, b) {

@@ -53,10 +53,7 @@ router.get('/main', function(req, res, next) {
     IDs[i] = bathArr[i][0];
   }
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
-    console.log(bathrooms);
     // ORDER BATHROOMS ARRAY BASED ON DISTANCES, ADD DISTANCES TO ARRAY
-    console.log(bathArr.length);
-    console.log(bathrooms.length);
     for (var i = 0; i < bathArr.length; i++) {
       for (var j = 0; j < bathrooms.length; j++) {
         if (bathrooms[j].id === bathArr[i][0]) {
@@ -238,7 +235,8 @@ router.get('/moreinfo/:id', function(req, res, next){
   knex('bathrooms').where('id', req.params.id).then(function(bathrooms) {
     console.log(bathrooms);
     res.render('moreinfo', {
-      bathroomInfo: bathrooms[0]
+      bathroomInfo: bathrooms[0],
+      id: req.params.id
     });
   })
 });
@@ -253,7 +251,7 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/connect/facebook', passport.authorize('facebook', { scope : ['email'] }));
 
 
-router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main', failureRedirect: '/users' }));
+router.get('/auth/facebook/callback/', passport.authenticate('facebook', { successRedirect: '/main', failureRedirect: '/users' }));
 
 
 module.exports = router;

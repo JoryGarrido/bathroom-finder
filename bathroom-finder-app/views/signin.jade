@@ -1,5 +1,6 @@
 extends layout
 block content
+
   div#signInSignUpPage
     div#signInHalf
       h2 Sign in
@@ -13,5 +14,4 @@ block content
           input(type="text" name="username" placeholder="username")
           input(type="password" name="password" placeholder="password")
           input(type="submit" value="Sign in")
-      
-  
+  div(class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true")
