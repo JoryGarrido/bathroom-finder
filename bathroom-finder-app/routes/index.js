@@ -158,9 +158,13 @@ router.post('/signout', function (req, res, next) {
   res.redirect('/');
 });
 
+// Trying to get moreinfo page to populate
 
 router.get('/moreinfo', function(req, res, next){
   res.render('moreinfo');
+})
+router.get('/addbathroom', function(req, res, next){
+  res.render('addbathroom');
 })
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER

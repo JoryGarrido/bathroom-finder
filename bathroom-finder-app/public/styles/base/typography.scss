@@ -42,10 +42,11 @@ div.stars {
   margin-right: 20px;
 }
 
-.menu #title {
-  color: white;
-  font-size: 42px;
-  padding-top: 10px;
+.menu #title img {
+  width: 300px;
+  height: 70px;
+  padding-top: 5px;
+
 }
 
 .hidden {
@@ -93,7 +94,7 @@ div.stars {
 
 .menu li:hover > a, .menu .current-item > a {
     text-decoration:none;
-    color: $robinsEgg;
+    color: $love;
 }
 
 .menu > ul > li {
@@ -245,7 +246,8 @@ main {
     font-size: 16px;
   }
   #locate:hover{
-    border: 2px solid white;
+    border: 2px solid $love;
+    color: $love;
   }
 #teamInfo {
   display: flex;
@@ -320,7 +322,6 @@ main {
   background-color: $robinsEgg;
   color: $granite;
 }
-
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
@@ -354,4 +355,9 @@ main {
   h2, p {
     color: red;
   }
+}
+// Add a bathroom page
+
+#addBathroom {
+  text-align: center;
 }
