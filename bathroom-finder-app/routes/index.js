@@ -170,17 +170,47 @@ router.get('/addbathroom', function(req, res, next){
 })
 
 
-<<<<<<< HEAD
 router.post('/addbathroom', function(req, res, next){
   console.log(req.body);
+
+  if(req.body.mensChangingTable === "false"){
+    req.body.mensChangingTable = false
+  }
+  if(req.body.womensChangingTable === "false"){
+    req.body.womensChangingTable = false
+  }
+  if(req.body.unisex === "false"){
+    req.body.unisex = false
+  }
+  if(req.body.customersOnly === "false"){
+    req.body.customersOnly = false
+  }
+  if(req.body.private === "false"){
+    req.body.private = false
+  }
+  if(req.body.mensChangingTable === "true"){
+    req.body.mensChangingTable = true
+  }
+  if(req.body.womensChangingTable === "true"){
+    req.body.womensChangingTable = true
+  }
+  if(req.body.unisex === "true"){
+    req.body.unisex = true
+  }
+  if(req.body.customersOnly === "true"){
+    req.body.customersOnly = true
+  }
+  if(req.body.private === "true"){
+    req.body.private = true
+  }
 
   knex('bathrooms')
   .insert({
     bathroomname: req.body.bathroomname,
     rating: 4,
-    lat: 4.3,
-    lng: 4.2,
-    users_id: 1,
+    lat: req.session.lat,
+    lng: req.session.lng,
+    users_id: req.session.id,
     directions: req.body.directions,
     menschangingtable: req.body.menschangingtable,
     womanschangingtable: req.body.womenschangingtable,
@@ -191,79 +221,6 @@ router.post('/addbathroom', function(req, res, next){
     res.redirect('/main');
   })
 })
-=======
-// router.post('/addbathroom', function(req, res, next){
-//   console.log(req.body);
-//
-//   if(req.body.mensChangingTable === "false"){
-//     req.body.mensChangingTable = false
-//   }
-//   if(req.body.womensChangingTable === "false"){
-//     req.body.womensChangingTable = false
-//   }
-//   if(req.body.unisex === "false"){
-//     req.body.unisex = false
-//   }
-//   if(req.body.customersOnly === "false"){
-//     req.body.customersOnly = false
-//   }
-//   if(req.body.private === "false"){
-//     req.body.private = false
-//   }
-//
-//   knex('bathrooms')
-//   .insert({
-//     bathroomname: req.body.bathroomName,
-//     rating: 4,
-//     lat: 4.3,
-//     lng: 4.2,
-//     users_id: 1,
-//     directions: req.body.directions,
-//     menschangingtable: req.body.mensChangingTable,
-//     womanschangingtable: req.body.womensChangingTable,
-//     unisex: req.body.unisex,
-//     customersonly: req.body.customersOnly,
-//     private: req.body.private
-//   }).then(function(){
-//     res.redirect('/');
-//   })
-// })
-//   if(req.body.menschangingtable == "true"){
-//     req.body.menschangingtable = true;
-//   }
-//   else if(req.body.menschangingtable == "false"){
-//     req.body.menschangingtable= false;
-//   }
-//   else{
-//     req.body.menschangingtable = null;
-//   }
-//   console.log(req.body);
-//   console.log(typeof(req.body.menschangingtable));
-//   console.log(req.session.lat);
-//   console.log(typeof(req.session.lng));
-//   knex('bathrooms')
-//   .insert({
-//     bathroomname: req.body.bathroomname.toLowerCase(),
-//     rating: 5,
-//     lat: parseFloat(req.session.lat),
-//     lng: parseFloat(req.session.lng),
-//     user_id: 1,
-//     directions: req.body.directions.toLowerCase(),
-//     menschangingtable: req.body.menschangingtable
-//     // womanschangingtable: req.body.womenschangingtable,
-//     // unisex: req.body.unisex,
-//     // customersonly: req.body.customersonly,
-//     // private: req.body.private
-//   }).then(function(){
-//
-//     res.redirect('/main');
-//   }).catch(function(e) {
-//     console.log(e);
-//   })
-// })
-
-
->>>>>>> 8789f7b0ae4200d4166303e980e05ca2343d5901
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER/ADMIN
 // function verifyUser(req, res, next) {
@@ -273,6 +230,15 @@ router.post('/addbathroom', function(req, res, next){
 //   next();
 // }
 
+
+router.get('/moreinfo/:id', function(req, res, next){
+  knex('bathrooms').where('id', req.params.id).then(function(bathrooms) {
+    console.log(bathrooms);
+    res.render('moreinfo', {
+      bathroomInfo: bathrooms[0]
+    });
+  })
+});
 
 
 router.get('/auth/facebook', passport.authenticate('facebook'));

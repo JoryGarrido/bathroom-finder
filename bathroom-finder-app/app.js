@@ -96,8 +96,8 @@ app.use(function(err, req, res, next) {
 });
 
 passport.use(new FacebookStrategy({
-    clientID: '141550522930397',
-    clientSecret: 'd9b7fb6f4fca0d8a3ef462c010324fa5',
+    clientID: process.env.FB_ID,
+    clientSecret: process.env.FB_SECRET,
     callbackURL: "http://localhost:3000/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
   },

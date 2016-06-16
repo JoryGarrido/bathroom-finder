@@ -13,7 +13,7 @@ div#list {
   overflow: auto; }
 
 div.listItem {
-  height: 100px;
+  height: 150px;
   width: 75%;
   background-color: #c8c8c8;
   margin: 3px auto;
@@ -235,9 +235,11 @@ div.stars {
 .attFlex {
   float: right;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  align-content: space-around; }
+  align-content: space-around;
+  flex-wrap: nowrap;
+  height: 100%; }
 
 #signInSignUpPage {
   display: flex;
@@ -251,5 +253,14 @@ div.stars {
 
 #addBathroom {
   text-align: center; }
+
+.attributeExist {
+  color: blue; }
+
+.attributeNonExist {
+  color: red; }
+
+.attributeNull {
+  color: green; }
 
 /*# sourceMappingURL=style.css.map */

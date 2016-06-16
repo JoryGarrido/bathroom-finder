@@ -16,7 +16,7 @@ div#list{
 }
 
 div.listItem {
-  height:100px;
+  height:150px;
   width: 75%;
   background-color: rgb(200,200,200);
   margin: 3px auto;
@@ -281,9 +281,11 @@ main {
 .attFlex {
   float: right;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   align-content: space-around;
+  flex-wrap: nowrap;
+  height: 100%;
 }
 
 #signInSignUpPage {
@@ -302,4 +304,14 @@ main {
 
 #addBathroom {
   text-align: center;
+}
+
+.attributeExist {
+  color: blue;
+}
+.attributeNonExist {
+  color: red;
+}
+.attributeNull {
+  color: green;
 }
