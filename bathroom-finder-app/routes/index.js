@@ -91,7 +91,6 @@ router.get('/bathrooms', function (req, res, next) {
         }
       }
     }
-    console.log(name);
     res.json({ bathrooms: sendArray, name: name, lat: lat, lng: lng});
   })
 });
@@ -148,6 +147,7 @@ router.post('/signin', function(req, res, next) {
       } else {
         res.render('signinfail')
       }
+      res.redirect('/main');
     });
 });
 
@@ -166,6 +166,7 @@ router.get('/moreinfo', function(req, res, next){
 router.get('/addbathroom', function(req, res, next){
   res.render('addbathroom');
 })
+
 
 router.post('/addbathroom', function(req, res, next){
   console.log(req.body);
@@ -203,25 +204,20 @@ router.post('/addbathroom', function(req, res, next){
 
   knex('bathrooms')
   .insert({
-    bathroomname: req.body.bathroomName,
+    bathroomname: req.body.bathroomname,
     rating: 4,
     lat: req.session.lat,
     lng: req.session.lng,
     users_id: req.session.id,
     directions: req.body.directions,
-    menschangingtable: req.body.mensChangingTable,
-    womanschangingtable: req.body.womensChangingTable,
+    menschangingtable: req.body.menschangingtable,
+    womanschangingtable: req.body.womenschangingtable,
     unisex: req.body.unisex,
-    customersonly: req.body.customersOnly,
+    customersonly: req.body.customersonly,
     private: req.body.private
   }).then(function(){
-    res.redirect('/');
+    res.redirect('/main');
   })
-})
-
-
-router.get('/admin', verifyAdmin, function(req, res, next) {
-  res.render('admin', {title: "Admin page"});
 })
 
 // RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER/ADMIN
@@ -232,16 +228,6 @@ router.get('/admin', verifyAdmin, function(req, res, next) {
 //   next();
 // }
 
-function verifyAdmin(req, res, next) {
-  if (!req.session.id) {
-  // if (res.locals.user.isAdmin === true) {
-    res.redirect('/');
-  }
-  knex('bathrooms').then(function(bathrooms) {
-    res.render('admin', {bathrooms: bathrooms})
-  })
-  // next();
-}
 
 router.get('/moreinfo/:id', function(req, res, next){
   knex('bathrooms').where('id', req.params.id).then(function(bathrooms) {

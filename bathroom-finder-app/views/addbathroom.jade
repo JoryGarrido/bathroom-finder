@@ -1,74 +1,50 @@
 extends layout
 block content
   
-  
+    
   body
     section#addBathroom
       h1 Add Bathroom
-      form(action='/addbathroom' method='POST')
-        input(type="text" name="bathroomName")
-        input(type="text" name="directions")
-        input(type="radio" name="mensChangingTable" value="true")
-        input(type="radio" name="mensChangingTable" value="false")
-        input(type="radio" name="womensChangingTable" value="true")
-        input(type="radio" name="womensChangingTable" value="false")
-        input(type="radio" name="unisex" value="true")
-        input(type="radio" name="unisex" value="false")
-        input(type="radio" name="customersOnly" value="true")
-        input(type="radio" name="customersOnly" value="false")
-        input(type="radio" name="private" value="true")
-        input(type="radio" name="private" value="false")
-        input(type="submit")
-        //- h4 Bathroom Name
-        //- label(for='name')
-        //-   input#bathroomname(type='text' name='bathroomname')
-        //- br
-        //- h4 Rating
-        //- div
-        //-   span  &#9734
-        //-   span  &#9734
-        //-   span  &#9734
-        //-   span  &#9734
-        //-   span  &#9734
-        //- h4 Review
-        //- label(for='review')
-        //-   textarea#review(name='review', value='review', Placeholder='write a review')
-        //- h4 Is this bathroom private or multistall?
-        //- label(for='private')
-        //-   | Private
-        //-   input(type='radio', name='private', value='true')
-        //- label(for='private')
-        //-   | Multi
-        //-   input(type='radio', name='private', value='false')
-        //- h4 Is there a changing table in the Mens Room?
-        //- label(for='menschangingtable')
-        //-   | Yes
-        //-   input(type='radio', name='menschangingtable', value='true')
-        //- label(for='menschangingtable')
-        //-   | No
-        //-   input(type='radio', name='menschangingtable', value='false')
-        //- h4 Is there a changing table in the Womens Room?
-        //- label(for='womenschangingtable')
-        //-   | Yes
-        //-   input(type='radio', name='womenschangingtable', value='true')
-        //- label(for='womenschangingtable')
-        //-   | No
-        //-   input(type='radio', name='womenschangingtable', value='false')
-        //- h4 Is it a unisex bathroom?
-        //- label(for='unisex')
-        //-   | Yes
-        //-   input(type='radio', name='unisex', value='true')
-        //- label(for='unisex')
-        //-   | No
-        //-   input(type='radio', name='unisex', value='false')
-        //- h4 Is is a customers only bathroom?
-        //- label(for='customersonly')
-        //-   | Yes
-        //-   input(type='radio', name='customersonly', value='true')
-        //- label(for='customersonly')
-        //-   | No
-        //-   input(type='radio', name='customersonly', value='false')
-        //- h4 What are the hours of this establishment?
-        //- input#hours(type='text', name='hours')
-        //- br
-        //- input(type='submit')
+      form(action='/addbathroom', method='POST')
+        h3 Bathroom Name
+        input(type='text', name='bathroomname')
+        h4 Directions
+        textarea(name='directions', rows="5", cols="50")
+        h4 Is there a changing table in the Mens Bathroom?
+        label
+          | Yes 
+          input(type='radio', name='menschangingtable', value='true')
+        label
+          | No 
+          input(type='radio', name='menschangingtable', value='false')
+          label
+            h4 Is there a changing table in the Womens Bathroom?
+            label
+              | Yes 
+              input(type='radio', name='womenschangingtable', value='true')
+            label
+              | No 
+              input(type='radio', name='womenschangingtable', value='false')
+            h4 Is this a unisex bathroom?
+            label
+              | Yes 
+              input(type='radio', name='unisex', value='true')
+            label
+              | No 
+              input(type='radio', name='unisex', value='false')
+            h4 Is this bathroom for customers only?
+            label
+              | Yes 
+              input(type='radio', name='customersonly', value='true')
+            label
+              | No 
+              input(type='radio', name='customersonly', value='false')
+            h4 Is this a single unit or multiple stall bathroom?
+            label
+              | Single 
+              input(type='radio', name='private', value='true')
+            label
+              | Multiple 
+              input(type='radio', name='private', value='false')
+            br
+            input(type='submit')

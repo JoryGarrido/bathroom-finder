@@ -2,13 +2,6 @@ extends layout
 block content
 
   h1 Admin page
-  table
-    tr
-      th Bathroom name
-      th Directions
-    each bathroom in bathrooms
-      tr
-        td= bathroom.bathroomname
-        td= bathroom.directions
-        td
-          a(href="/delete") Delete
+  a(href="/admin/users") Update users
+  a(href="/admin/bathrooms") Update bathrooms
+  a(href="/admin/reviews") Update reviews
