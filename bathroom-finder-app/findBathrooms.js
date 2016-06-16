@@ -52,15 +52,13 @@ function findBathrooms(oLat, oLng, x, resolve) {
           for (var i = 0; i < bathrooms.length; i++) {
             ajaxArray[i] = [];
             ajaxArray[i][0] = bathrooms[i].id;
-            ajaxArray[i] = [];
-            ajaxArray[i][0] = bathrooms[i].id;
             try {
               ajaxArray[i][1] = result.rows[0].elements[i].distance.value;
             } catch (e) {
-              ajaxArray[i][1] = 'N/A'
-              console.log('undefined distance');
+              ajaxArray[i][1] = 0;
             }
           }
+          console.log(ajaxArray);
 
           // RUN SORTING ALGORITHM
           var idDistance = ajaxArray.sort(function(a, b) {
