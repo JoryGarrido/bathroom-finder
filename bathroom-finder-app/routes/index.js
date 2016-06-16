@@ -42,7 +42,6 @@ router.post('/position', function(req, res, next) {
     req.session.bathrooms = bathroomIDs;
     res.redirect('/main');
   })
-  console.log(req.session.lat);
 });
 
 router.get('/main', function(req, res, next) {
