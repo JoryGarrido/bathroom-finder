@@ -35,7 +35,7 @@ router.post('/position', function(req, res, next) {
   var promise = new Promise(function(resolve, reject) {
 
     ////////////////// UNCOMMENT IF MAIN PAGE DOESN'T WORK \\\\\\\\\\\\\\\\\\\\\\\
-    // findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
+    findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
   // RECEIVE ARRAY OF IDS/DISTANCES OF CLOSEST BATHROOMS, ADD TO COOKIE
   promise.then(function(bathroomIDs) {
@@ -213,7 +213,7 @@ router.post('/addbathroom', function(req, res, next){
     users_id: req.session.id,
     directions: req.body.directions,
     menschangingtable: req.body.menschangingtable,
-    womanschangingtable: req.body.womenschangingtable,
+    womenschangingtable: req.body.womenschangingtable,
     unisex: req.body.unisex,
     customersonly: req.body.customersonly,
     private: req.body.private
@@ -240,6 +240,10 @@ router.get('/moreinfo/:id', function(req, res, next){
   })
 });
 
+
+router.get('/addcomment', function(req, res, next){
+  res.render('')
+});
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
 
