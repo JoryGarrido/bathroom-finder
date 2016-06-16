@@ -147,6 +147,7 @@ router.post('/signin', function(req, res, next) {
       } else {
         res.render('signinfail')
       }
+      res.redirect('/main');
     });
 });
 
@@ -203,38 +204,38 @@ router.get('/addbathroom', function(req, res, next){
 //     res.redirect('/');
 //   })
 // })
-  // if(req.body.menschangingtable == "true"){
-  //   req.body.menschangingtable = true;
-  // }
-  // else if(req.body.menschangingtable == "false"){
-  //   req.body.menschangingtable= false;
-  // }
-  // else{
-  //   req.body.menschangingtable = null;
-  // }
-  // console.log(req.body);
-  // console.log(typeof(req.body.menschangingtable));
-  // console.log(req.session.lat);
-  // console.log(typeof(req.session.lng));
-  // knex('bathrooms')
-  // .insert({
-  //   bathroomname: req.body.bathroomname.toLowerCase(),
-  //   rating: 5,
-  //   lat: parseFloat(req.session.lat),
-  //   lng: parseFloat(req.session.lng),
-  //   user_id: 1,
-  //   directions: req.body.directions.toLowerCase(),
-  //   menschangingtable: req.body.menschangingtable
-  //   // womanschangingtable: req.body.womenschangingtable,
-  //   // unisex: req.body.unisex,
-  //   // customersonly: req.body.customersonly,
-  //   // private: req.body.private
-  // }).then(function(){
-  //
-  //   res.redirect('/main');
-  // }).catch(function(e) {
-  //   console.log(e);
-  // })
+//   if(req.body.menschangingtable == "true"){
+//     req.body.menschangingtable = true;
+//   }
+//   else if(req.body.menschangingtable == "false"){
+//     req.body.menschangingtable= false;
+//   }
+//   else{
+//     req.body.menschangingtable = null;
+//   }
+//   console.log(req.body);
+//   console.log(typeof(req.body.menschangingtable));
+//   console.log(req.session.lat);
+//   console.log(typeof(req.session.lng));
+//   knex('bathrooms')
+//   .insert({
+//     bathroomname: req.body.bathroomname.toLowerCase(),
+//     rating: 5,
+//     lat: parseFloat(req.session.lat),
+//     lng: parseFloat(req.session.lng),
+//     user_id: 1,
+//     directions: req.body.directions.toLowerCase(),
+//     menschangingtable: req.body.menschangingtable
+//     // womanschangingtable: req.body.womenschangingtable,
+//     // unisex: req.body.unisex,
+//     // customersonly: req.body.customersonly,
+//     // private: req.body.private
+//   }).then(function(){
+//
+//     res.redirect('/main');
+//   }).catch(function(e) {
+//     console.log(e);
+//   })
 // })
 
 
