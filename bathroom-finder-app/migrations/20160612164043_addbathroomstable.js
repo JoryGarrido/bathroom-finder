@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('bathroomname').notNullable();
     table.integer('rating').notNullable();
-    table.float('lat', 24).notNullable();
+    table.float('lat', [24]).notNullable();
     table.float('lng', 24).notNullable();
     table.integer('users_id').references('id').inTable('users');
     table.string('directions');

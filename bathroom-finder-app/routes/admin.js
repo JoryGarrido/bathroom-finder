@@ -60,52 +60,60 @@ router.get('/bathrooms/:id/edit', function(req, res, next) {
 });
 
 router.post('/bathrooms/:id/post', function(req, res, next) {
-  if (req.body.mensChangingTable === "false") {
-    req.body.mensChangingTable = false
+  var menschangingtable;
+  var womenschangingtable;
+  var unisex;
+  var customersonly;
+  var isprivate;
+
+  if (req.body.menschangingtable === "false") {
+    menschangingtable = false
   }
-  if (req.body.womensChangingTable === "false") {
-    req.body.womensChangingTable = false
+  if (req.body.womenschangingtable === "false") {
+    womenschangingtable = false
   }
   if (req.body.unisex === "false") {
-    req.body.unisex = false
+    unisex = false
   }
-  if (req.body.customersOnly === "false") {
-    req.body.customersOnly = false
+  if (req.body.customersonly === "false") {
+    customersonly = false
   }
   if (req.body.private === "false") {
-    req.body.private = false
+    isprivate = false
   }
-  if (req.body.mensChangingTable === "true") {
-    req.body.mensChangingTable = true
+  if (req.body.menschangingtable === "true") {
+    menschangingtable = true
   }
-  if (req.body.womensChangingTable === "true") {
-    req.body.womensChangingTable = true
+  if (req.body.womenschangingtable === "true") {
+    womenschangingtable = true
   }
   if (req.body.unisex === "true") {
-    req.body.unisex = true
+    unisex = true
   }
-  if (req.body.customersOnly === "true") {
-    req.body.customersOnly = true
+  if (req.body.customersonly === "true") {
+    customersonly = true
   }
   if (req.body.private === "true") {
-    req.body.private = true
+    isprivate = true
   }
-  console.log(req.params);
-  // knex('bathrooms').where('id', req.params.id).first().update(
-  //   bathroomname: req.body.bathroomname,
+  console.log(menschangingtable);
+  console.log(typeof(menschangingtable));
+
+  knex('bathrooms').where('id', req.params.id).update({
+    bathroomname: req.body.bathroomname,
   //   rating: 4,
   //   lat: req.session.lat,
   //   lng: req.session.lng,
   //   users_id: req.session.id,
-  //   directions: req.body.directions,
-  //   menschangingtable: req.body.menschangingTable,
-  //   womanschangingtable: req.body.womenschangingtable,
-  //   unisex: req.body.unisex,
-  //   customersonly: req.body.customersonly,
-  //   private: req.body.private
-  // ).then(function() {
-  //   res.redirect('/admin/bathrooms');
-  // });
+    directions: req.body.directions,
+    menschangingtable: menschangingtable,
+    womenschangingtable: womenschangingtable,
+    unisex: unisex,
+    customersonly: customersonly,
+    private: isprivate
+}).then(function() {
+    res.redirect('/admin/bathrooms');
+  });
 });
 
 router.get('/reviews/:id/edit', function(req, res, next) {
@@ -123,8 +131,8 @@ router.post('/reviews/:id/edit', function(req, res, next) {
 });
 
 function verifyAdmin(req, res, next) {
-  if (!req.session.id) {
-    // if (res.locals.user.isAdmin === true) {
+  // if (!req.session.id) {
+  if (res.locals.user.isadmin === false) {
     res.redirect('/');
   }
   next();
