@@ -5,7 +5,7 @@
     // table.string('facebookId').unique;
     // table.string('accesstoken');
     table.string('password').notNullable();
-    table.boolean('isAdmin').notNullable().defaultTo(false);
+    table.boolean('isadmin').notNullable().defaultTo(false);
   });
 };
 

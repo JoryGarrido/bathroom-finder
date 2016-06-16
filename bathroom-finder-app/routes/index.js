@@ -21,16 +21,13 @@ router.get('/', function(req, res, next) {
 router.post('/position', function(req, res, next) {
   var lat = req.body.lat.toString();
   var lng = req.body.lng.toString();
-
   // SET CURRENT LOCATION COOKIE
   req.session.lat = lat;
   req.session.lng = lng;
-
   // INVOKE FIND BATHROOMS ALGORITHM
   var promise = new Promise(function(resolve, reject) {
     findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
-
   // RECEIVE ARRAY OF IDS/DISTANCES OF CLOSEST BATHROOMS, ADD TO COOKIE
   promise.then(function(bathroomIDs) {
     req.session.bathrooms = bathroomIDs;
@@ -47,7 +44,6 @@ router.get('/main', function(req, res, next) {
     IDs[i] = bathArr[i][0];
   }
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
-
     // ORDER BATHROOMS ARRAY BASED ON DISTANCES, ADD DISTANCES TO ARRAY
     for (var i = 0; i < bathArr.length; i++) {
       for (var j = 0; j < bathrooms.length; j++) {
@@ -57,7 +53,6 @@ router.get('/main', function(req, res, next) {
         }
       }
     }
-
     res.render('main', {
       lat: req.session.lat,
       lng: req.session.lng,
@@ -80,7 +75,6 @@ router.get('/bathrooms', function (req, res, next) {
     IDs[i] = bathArr[i][0];
   }
   knex('bathrooms').whereIn('id', IDs).then(function(bathrooms) {
-
     // ORDER BATHROOMS ARRAY BASED ON DISTANCES, ADD DISTANCES TO ARRAY
     for (var i = 0; i < bathArr.length; i++) {
       for (var j = 0; j < bathrooms.length; j++) {
@@ -152,12 +146,27 @@ router.get('/moreinfo', function(req, res, next){
   res.render('moreinfo');
 })
 
-// RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER
-function verifyUser(req, res, next) {
+router.get('/admin', verifyAdmin, function(req, res, next) {
+  res.render('admin', {title: "Admin page"});
+})
+
+// RENDER VIEW DIFFERENTLY FOR GUEST VS. MEMBER/ADMIN
+// function verifyUser(req, res, next) {
+//   if (!req.session.id) {
+//     res.redirect('/');
+//   }
+//   next();
+// }
+
+function verifyAdmin(req, res, next) {
   if (!req.session.id) {
+  // if (res.locals.user.isAdmin === true) {
     res.redirect('/');
   }
-  next();
+  knex('bathrooms').then(function(bathrooms) {
+    res.render('admin', {bathrooms: bathrooms})
+  })
+  // next();
 }
 
 
