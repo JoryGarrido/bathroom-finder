@@ -4,7 +4,10 @@ function initMap() {
     queryRequest = $.ajax({
       type: "GET",
       dataType: 'json',
-      url: 'http://localhost:3000/bathrooms'
+      // WHEN PUSHING TO HEROKU USE THIS:
+      url: 'https://pottyspotter.herokuapp.com/bathrooms'
+      // ELSE USE THIS:
+      // url: 'http://localhost:3000/bathrooms'
     })
 
     queryRequest.done(function(data) {
