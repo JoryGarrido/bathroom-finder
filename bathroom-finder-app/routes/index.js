@@ -117,7 +117,7 @@ router.post('/signup', function(req, res, next) {
         })
         .then(function(id) {
           req.session.id = id;
-          res.redirect('/');
+          res.redirect('/main');
         })
         .catch(function(err) {
           next(err);
@@ -127,6 +127,14 @@ router.post('/signup', function(req, res, next) {
       next(err);
     });
 })
+
+router.post('/signuperror', function(req, res, next){
+  res.render('/main');
+});
+
+router.get('/signin', function(req,res,next){
+  res.render('signin');
+});
 
 router.post('/signin', function(req, res, next) {
   knex('users')

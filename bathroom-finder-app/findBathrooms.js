@@ -52,7 +52,7 @@ function findBathrooms(oLat, oLng, x, resolve) {
           for (var i = 0; i < bathrooms.length; i++) {
             ajaxArray[i] = [];
             ajaxArray[i][0] = bathrooms[i].id;
-            ajaxArray[i][1] = result.rows[0].elements[i].distance.value;
+            // ajaxArray[i][1] = result.rows[0].elements[i].distance.value;
           }
 
           // RUN SORTING ALGORITHM

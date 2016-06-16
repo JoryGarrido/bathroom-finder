@@ -273,4 +273,21 @@ div.stars {
 .starNumber {
   display: none; }
 
+.attFlex {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around; }
+
+#signInSignUpPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
+#signUpHalfErr {
+  border: 5px solid red; }
+  #signUpHalfErr h2, #signUpHalfErr p {
+    color: red; }
+
 /*# sourceMappingURL=style.css.map */
