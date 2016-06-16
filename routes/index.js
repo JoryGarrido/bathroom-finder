@@ -33,8 +33,6 @@ router.post('/position', function(req, res, next) {
   req.session.lng = lng;
   // INVOKE FIND BATHROOMS ALGORITHM
   var promise = new Promise(function(resolve, reject) {
-
-    ////////////////// UNCOMMENT IF MAIN PAGE DOESN'T WORK \\\\\\\\\\\\\\\\\\\\\\\
     findBathrooms.findBathrooms(lat, lng, 0.1, resolve);
   })
   // RECEIVE ARRAY OF IDS/DISTANCES OF CLOSEST BATHROOMS, ADD TO COOKIE
