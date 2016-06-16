@@ -1,0 +1,16 @@
+extends layout
+block content
+
+  h1 Admin page
+  table
+    tr
+      th Bathroom name
+      th Directions
+    each bathroom in bathrooms
+      tr
+        td= bathroom.bathroomname
+        td= bathroom.directions
+        td
+          a(href="/admin/bathrooms/#{bathroom.id}/edit") Edit
+          a(href="/admin/#{bathroom.id}/delete") Delete
+        
