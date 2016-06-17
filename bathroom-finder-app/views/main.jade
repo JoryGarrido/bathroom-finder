@@ -1,52 +1,53 @@
 extends layout
 block content
 
-  div(id="map")
-  div(id="list")
-    each bathroom in bathrooms
-      div(class="listItem")
-        div(class="halfList")
+  body
+    div(id="map")
+    div(id="list")
+      each bathroom in bathrooms
+        div(class="listItem")
+          div(class="halfList")
 
-          div(class="rating stars")
-            span(class="star1") &#9734
-            span(class="star2") &#9734
-            span(class="star3") &#9734
-            span(class="star4") &#9734
-            span(class="star5") &#9734
-          a(class="listTitle" href='/moreinfo')= bathroom.bathroomname
-          span  -- 
-          span= bathroom.distance 
-          span  meters
-          p= bathroom.directions
-          
-        div(class="attFlex")
-          h4 ATTRIBUTES
-          div(class="attributes1")
-            if bathroom.menschangingtable == true
-              p.attributeExist Men's Changing Table
-            if bathroom.menschangingtable == false
-              p.attributeNonExist
-            if bathroom.menschangingtable == null
-              p.attributeNull
-            if bathroom.womanschangingtable == true
-              p.attributeExist Women's Changing table            
-            if bathroom.womenschangingtable == false
-              p.attributeNonExist
-            if bathroom.unisex == true
-              p.attributeExist Unisex
-            if bathroom.unisex == false
-              p.attributeNonExist
-            if bathroom.customersonly == true
-              p.attributeExist Customers Only
-            if bathroom.customersonly == false
-              p.attributeNonExist
-            if bathroom.private == true
-              p.attributeExist Private
-            if bathroom.private == false
-              p.attributeNonExist
-        a(href='moreinfo/#{bathroom.id}') Details
-        div(class="starNumber")= bathroom.rating
+            div(class="rating stars")
+              span(class="star1") &#9734
+              span(class="star2") &#9734
+              span(class="star3") &#9734
+              span(class="star4") &#9734
+              span(class="star5") &#9734
+            span= bathroom.bathroomname
+            span  -- 
+            span= bathroom.distance 
+            span  meters
+            p= bathroom.directions
+            
+          div(class="attFlex")
+            h4 ATTRIBUTES
+            div(class="attributes1")
+              if bathroom.menschangingtable == true
+                p.attributeExist Men's Changing Table
+              if bathroom.menschangingtable == false
+                p.attributeNonExist
+              if bathroom.menschangingtable == null
+                p.attributeNull
+              if bathroom.womanschangingtable == true
+                p.attributeExist Women's Changing table            
+              if bathroom.womenschangingtable == false
+                p.attributeNonExist
+              if bathroom.unisex == true
+                p.attributeExist Unisex
+              if bathroom.unisex == false
+                p.attributeNonExist
+              if bathroom.customersonly == true
+                p.attributeExist Customers Only
+              if bathroom.customersonly == false
+                p.attributeNonExist
+              if bathroom.private == true
+                p.attributeExist Private
+              if bathroom.private == false
+                p.attributeNonExist
+          a(href='moreinfo/#{bathroom.id}') Details
+          div(class="starNumber")= bathroom.rating
 
 
-  script(src="/javascript/initMap.js")
-  script(src="https://maps.googleapis.com/maps/api/js?key=#{key}&callback=initMap" async defer)
+    script(src="/javascript/initMap.js")
+    script(src="https://maps.googleapis.com/maps/api/js?key=#{key}&callback=initMap" async defer)

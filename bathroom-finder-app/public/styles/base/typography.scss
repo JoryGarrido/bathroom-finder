@@ -6,7 +6,6 @@ html *{
 html, body {
   height: 100%;
 }
-
 div#map {
   height: 45%;
 }
@@ -19,7 +18,7 @@ div.listItem {
   height:150px;
   width: 75%;
   background-color: rgb(200,200,200);
-  margin: 3px auto;
+  margin: 3px auto 3px;
   padding: 15px;
   box-sizing: border-box;
 }
@@ -48,12 +47,16 @@ div.stars {
   padding-top: 5px;
   padding-left: 30px;
 }
+.menu #title img:hover{
+  cursor: pointer;
+}
 
 .hidden {
   display: none;
 }
 
 // --------------- header start -------------------
+
 
 
 .menu-wrap {
@@ -136,38 +139,7 @@ div.stars {
     opacity:1;
 }
 
-
-// --------------------------------
-
-// --------------- Sign in/Sign Up-------------------
-#signin, #signup {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
-
-  z-index: 200;
-  border: 10px solid black;
-  width: 50vw;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
-
-  .xButton {
-    align-self: flex-end;
-    margin-right: 20px;
-  }
-}
-
 // Landing page styling
-main {
-  // margin-left: 5px;
-  // margin-right: 5px;
-}
 #banner {
   display: flex;
   flex-direction: column;
@@ -241,6 +213,10 @@ main {
   #footer p{
     padding-top: 10px;
   }
+
+  // Main view page styling
+
+
   // More info viewpage
 #details{
   text-align: center;
@@ -288,12 +264,44 @@ main {
   height: 100%;
 }
 
+// Sign up and Sign in page
+
 #signInSignUpPage {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  height: 80vh;
 }
-
+  #signInSignUpPage div{
+    margin-top: 15px;
+  }
+  #signInName, #signInPass, #signUpName, #signUpPass{
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-bottom: 3px solid $granite;
+  }
+    #signInName:focus, #signInPass:focus, #signUpName:focus, #signUpPass:focus{
+      border-bottom: 3px solid $love;
+      outline: none;
+    }
+  #signUpButton, #signInButton {
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 0;
+    background-color: $robinsEgg;
+    color: $granite;
+  }
+    #signInButton:focus, #signUpButton:focus {
+      outline: none;
+    }
+    #signUpButton:hover, #signInButton:hover {
+      background-color: $love;
+    }
 #signUpHalfErr{
   border: 5px solid red;
   h2, p {
@@ -304,14 +312,49 @@ main {
 
 #addBathroom {
   text-align: center;
+  color: $granite;
 }
+  #addBathroom input{
+    margin: 10px;
+  }
+  #addBathroom h1 {
+    margin-bottom: 25px;
+  }
+  #submitBathroom{
+    height: 30px;
+    width: 120px;
+    font-size: 16px;
+    background-color: $robinsEgg;
+    border: none;
+    border-radius: none;
+  }
+    #submitBathroom:hover{
+      background-color: $love;
+    }
+  #submitName{
+    font-size: 20px;
+    border: none;
+    border-bottom: 3px solid $granite;
+  }
+    #submitName:focus{
+      border-bottom: 3px solid $love;
+      outline: none;
+    }
+    #submitDescription:focus{
+      outline:none;
+    }
+  #addBathroom[type='radio']:after {
+    background: $love;
+  }
+
+
 
 .attributeExist {
-  color: blue;
+  color: green;
 }
 .attributeNonExist {
   color: red;
 }
 .attributeNull {
-  color: green;
+  color: blue;
 }

@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     window.location = "http://localhost:3000/signin";
   });
 
+  document.getElementById('title').addEventListener('click', function(){
+    window.location = "http://localhost:3000";
+  });
+
   document.getElementById("addBathroomButton").addEventListener('click', function(){
     window.location = "http://localhost:3000/addbathroom";
   });

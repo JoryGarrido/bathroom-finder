@@ -7,9 +7,9 @@ block content
       h1 Add Bathroom
       form(action='/addbathroom', method='POST')
         h3 Bathroom Name
-        input(type='text', name='bathroomname')
+        input(type='text', name='bathroomname' id="submitName")
         h4 Directions
-        textarea(name='directions', rows="5", cols="50")
+        textarea(name='directions', rows="5", cols="50" id="submitDescription")
         h4 Is there a changing table in the Mens Bathroom?
         label
           | Yes 
@@ -47,4 +47,4 @@ block content
               | Multiple 
               input(type='radio', name='private', value='false')
             br
-            input(type='submit')
+            input(type='submit' id="submitBathroom")

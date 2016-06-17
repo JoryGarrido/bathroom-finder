@@ -5,14 +5,20 @@ block content
     div#signInHalf
       h2 Sign in
         form(action='/signin' method='POST')
-          input(type="text" name="username" placeholder="username")
-          input(type="password" name="password" placeholder="password")
-          input(type="submit" value="Sign in")
+          div
+            input(type="text" name="username" placeholder="username" id="signInName")
+          div
+            input(type="password" name="password" placeholder="password" id="signInPass")
+          div
+            input(type="submit" value="Sign In" id="signInButton")
     div#signUpHalf  
       h2 Sign Up
         form(action='/signup' method='POST')
-          input(type="text" name="username" placeholder="username")
-          input(type="password" name="password" placeholder="password")
-          input(type="submit" value="Sign in")
+        div
+          input(type="text" name="username" placeholder="username" id="signUpName")
+        div
+          input(type="password" name="password" placeholder="password" id="signUpPass") 
+        div
+          input(type="submit" value="Sign Up" id="signUpButton")
       a(href='auth/facebook/') LOG IN WITH FB
   div(class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true")
