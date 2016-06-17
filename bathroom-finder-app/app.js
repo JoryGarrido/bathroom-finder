@@ -110,7 +110,13 @@ passport.use(new FacebookStrategy({
     //     console.log();
     //   }
     // }
-    console.log(profile);
+    console.log(req.session);
+    knex('users').where({id: req.sesssion.id}).update({
+      fb_id: profile.id,
+      fb_displayname: profile.displayName,
+      fb_accesstoken: accessToken
+    })
+    console.log('hi');
     done(null, user);
   }
 ));

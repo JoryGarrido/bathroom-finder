@@ -10,6 +10,7 @@ DONE Add a bathroom View - KB
 DONE Add Admin View and allow it to delete things from the database - IS
 DONE Fix add bathroom page
 DONE pull data from db into view more page
+DONE oAuth
 
 STYLING Style Sign in/Sign up
 STYLING Style the bathroom details page
@@ -19,7 +20,6 @@ BUG Fix lat long accuracy
 BUG Signing in and signing out from the signup/sign in err view
 BUG review entry for add bathroom
 
-FEATURE oAuth
 FEATURE form for creating a review
 
 FEATURE Form Validate
