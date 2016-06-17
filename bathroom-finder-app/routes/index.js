@@ -207,7 +207,7 @@ router.post('/addbathroom', function(req, res, next){
   knex('bathrooms')
   .insert({
     bathroomname: req.body.bathroomname,
-    rating: 4,
+    rating: req.body.rating,
     lat: req.session.lat,
     lng: req.session.lng,
     users_id: req.session.id,

@@ -11,6 +11,7 @@ block content
             input(type="password" name="password" placeholder="password" id="signInPass")
           div
             input(type="submit" value="Sign In" id="signInButton")
+          div(class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true")
     div#signUpHalf  
       h2 Sign Up
         form(action='/signup' method='POST')
@@ -20,5 +21,3 @@ block content
           input(type="password" name="password" placeholder="password" id="signUpPass") 
         div
           input(type="submit" value="Sign Up" id="signUpButton")
-      a(href='auth/facebook/') LOG IN WITH FB
-  div(class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true")
