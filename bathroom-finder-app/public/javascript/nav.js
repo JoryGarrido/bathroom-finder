@@ -15,6 +15,9 @@ $(function() {
       console.log("geo fired");
       $.ajax({
         type: "POST",
+        // WHEN PUSHING TO HEROKU USE THIS:
+        // url: 'https://pottyspotter.herokuapp.com/position',
+        // ELSE USE THIS:
         url: 'http://localhost:3000/position',
         data: position
       });

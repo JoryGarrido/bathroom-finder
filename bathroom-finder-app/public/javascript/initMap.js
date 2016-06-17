@@ -5,6 +5,9 @@ function initMap() {
       type: "GET",
       dataType: 'json',
       url: 'http://localhost:3000/bathrooms'
+      // WHEN PUSHING TO HEROKU USE THIS:
+    // url: 'https://pottyspotter.herokuapp.com/bathrooms'
+    // ELSE USE THIS:
     })
 
     queryRequest.done(function(data) {
@@ -40,7 +43,7 @@ function drawMap(data) {
 
   for (var i = 0; i < bathrooms.length; i++) {
     num = (i + 1).toString();
-    var marker = new google.maps.Marker({ position: { lat: bathrooms[i].lat, lng: bathrooms[i].lng },
+    var marker = new google.maps.Marker({ position: { lat: parseFloat(bathrooms[i].lat), lng: parseFloat(bathrooms[i].lng) },
       map: map, title: num, label: num
     });
   }
