@@ -1,7 +1,11 @@
 # PROJECT NOTES:
-- Feel free to add and edit!
 
-#NAMES
+#Created By:
+- Jory Garrido
+- Ian Strouse
+- KC Baeton
+
+#Names
 - express app: “bathroom_finder_app”
 - dababase: “bathrooms”
 
@@ -28,9 +32,9 @@
 
 #Database
 
-Postgres?
+Postgres
 
-##Cagegories:
+##Categories:
  ( * if required)
 - * Name
 - * Men/Women/Both
